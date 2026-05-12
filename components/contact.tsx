@@ -63,7 +63,7 @@ export function Contact() {
                 <div>
                   <h3 className="text-[#1a3328] font-medium text-lg mb-2">Phone</h3>
                   <a
-                    href="tel:+998887150709"
+                    href="tel:+998 55 405 88 88"
                     className="text-[#1a3328]/60 hover:text-[#1a3328] transition-colors duration-300"
                   >
                     {t.contact.phone}
