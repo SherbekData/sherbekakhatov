@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     ],
   },
 
-  // ✅ Twitter / X
+  // / ✅ Twitter / X
   twitter: {
     card: 'summary_large_image',
     title: 'Miraki Gardens – Shahrisabz dam olish maskani',
