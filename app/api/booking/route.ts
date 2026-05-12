@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
     // Format the message for Telegram
     const message = `
-🏨 *Hotel: Miraki Garden*
+🏨 *Hotel: Miraki Gardens*
 ━━━━━━━━━━━━━━━━━━
 📋 *New Booking Request*
 ━━━━━━━━━━━━━━━━━━
