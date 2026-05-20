@@ -57,7 +57,11 @@ export function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-up animation-delay-400">
           <Link
-            href="#booking"
+              href="?be-booking-open=true"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '?be-booking-open=true';
+              }}
             className="w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full bg-[#d4af37] text-[#1a3328] text-sm tracking-[0.18em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-all duration-300 hover:shadow-lg hover:shadow-[#d4af37]/20"
           >
             {t.nav.bookNow}

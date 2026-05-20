@@ -10,6 +10,7 @@ import { Booking } from '@/components/booking';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
 import { SEO } from '@/components/seo';
+import BeSearchForm from "@/components/beForms/beSearchForm";
 
 export default function Home() {
   return (
@@ -17,13 +18,14 @@ export default function Home() {
       <SEO />
       <Header />
       <Hero />
+      <BeSearchForm />
       <Rooms />
       <Restaurant />
       <Garden />
       <Amenities />
       <Gallery />
       <Testimonials />
-      <Booking />
+      {/*<Booking />*/}
       <Contact />
       <Footer />
     </main>

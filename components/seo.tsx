@@ -5,21 +5,21 @@ import { useLanguage } from '@/lib/language-context';
 
 const seoData = {
   en: {
-    title: 'Miraki Garden – Resort in Shahrisabz',
+    title: 'Miraki Garden – Resort in Shahrisabz, Official site',
     description: 'Miraki Garden – Modern resort in Shahrisabz. Relax in the heart of nature.',
     keywords: 'Shahrisabz dam olish maskani, Miraki Garden, Shahrisabz hotel, отдых в Шахрисабзе, resort in Shahrisabz',
     locale: 'en_US',
     lang: 'en',
   },
   ru: {
-    title: 'Miraki Garden – Курорт в Шахрисабзе',
+    title: 'Miraki Garden – Курорт в Шахрисабзе, Официальный сайт',
     description: 'Miraki Garden – Современный курорт в Шахрисабзе. Отдохните на лоне природы.',
     keywords: 'Shahrisabz dam olish maskani, Miraki Garden, Shahrisabz hotel, отдых в Шахрисабзе, resort in Shahrisabz',
     locale: 'ru_RU',
     lang: 'ru',
   },
   uz: {
-    title: 'Miraki Garden – Shahrisabz dam olish maskani',
+    title: 'Miraki Garden – Shahrisabz dam olish maskani, Rasmiy sayt',
     description: "Miraki Garden – Shahrisabzda joylashgan zamonaviy dam olish maskani. Tabiat qo'ynida dam oling.",
     keywords: 'Shahrisabz dam olish maskani, Miraki Garden, Shahrisabz hotel, отдых в Шахрисабзе, resort in Shahrisabz',
     locale: 'uz_UZ',

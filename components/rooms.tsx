@@ -153,14 +153,14 @@ export function Rooms() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328] via-[#1a3328]/30 to-transparent" />
 
                   {/* Price Tag */}
-                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-[#d4af37] px-4 py-2 rounded-2xl shadow-lg">
-                    <span className="text-[#1a3328] text-sm sm:text-base font-[family-name:var(--font-montserrat)] font-bold">
-                      {room.price}
-                    </span>
-                    <span className="text-[#1a3328]/75 text-[11px] block font-[family-name:var(--font-montserrat)]">
-                      UZS / {t.rooms.perNight}
-                    </span>
-                  </div>
+                  {/*<div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-[#d4af37] px-4 py-2 rounded-2xl shadow-lg">*/}
+                  {/*  <span className="text-[#1a3328] text-sm sm:text-base font-[family-name:var(--font-montserrat)] font-bold">*/}
+                  {/*    {room.price}*/}
+                  {/*  </span>*/}
+                  {/*  <span className="text-[#1a3328]/75 text-[11px] block font-[family-name:var(--font-montserrat)]">*/}
+                  {/*    UZS / {t.rooms.perNight}*/}
+                  {/*  </span>*/}
+                  {/*</div>*/}
 
                   {/* Room name on mobile */}
                   <div className="absolute left-5 right-5 bottom-5 sm:hidden">
@@ -211,7 +211,10 @@ export function Rooms() {
 
                   {/* CTA */}
                   <button
-                    onClick={() => selectRoom(room.key)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = '?be-booking-open=true';
+                      }}
                     className="w-full text-center py-4 rounded-full bg-[#d4af37] text-[#1a3328] text-xs sm:text-sm tracking-[0.18em] uppercase font-[family-name:var(--font-montserrat)] font-bold hover:bg-[#c9a430] transition-all duration-300 active:scale-[0.98]"
                   >
                     {t.rooms.bookRoom}

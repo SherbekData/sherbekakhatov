@@ -40,7 +40,7 @@ export function Header() {
     { href: '#restaurant', label: t.nav.restaurant },
     { href: '#garden', label: t.nav.garden },
     { href: '#gallery', label: t.nav.gallery },
-    { href: '#booking', label: t.nav.booking },
+    { href: '?be-booking-open=true', label: t.nav.booking, forceReload: true },
     { href: '#contact', label: t.nav.contact },
   ];
 
@@ -75,6 +75,12 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                  if (link.forceReload) {
+                    e.preventDefault();
+                    window.location.href = link.href;
+                  }
+                }}
                 className="text-sm tracking-widest uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:text-[#d4af37] transition-colors duration-300"
               >
                 {link.label}
@@ -123,8 +129,13 @@ export function Header() {
             </div>
 
             <Link
-              href="#booking"
-              className="px-6 py-3 bg-[#d4af37] text-[#1a3328] text-sm tracking-widest uppercase font-[family-name:var(--font-montserrat)] font-semibold rounded-full hover:bg-[#c9a430] transition-colors duration-300"
+                href="?be-booking-open=true"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeMobileMenu();
+                  window.location.href = '?be-booking-open=true';
+                }}
+              className="booking-link px-6 py-3 bg-[#d4af37] text-[#1a3328] text-sm tracking-widest uppercase font-[family-name:var(--font-montserrat)] font-semibold rounded-full hover:bg-[#c9a430] transition-colors duration-300"
             >
               {t.nav.bookNow}
             </Link>
@@ -141,8 +152,12 @@ export function Header() {
             </a>
 
             <Link
-              href="#booking"
-              onClick={closeMobileMenu}
+                href="?be-booking-open=true"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeMobileMenu();
+                  window.location.href = '?be-booking-open=true';
+                }}
               className="hidden xs:inline-flex px-4 py-2 rounded-full bg-[#d4af37] text-[#1a3328] text-xs font-semibold uppercase tracking-wider"
             >
               {t.nav.bookNow}
@@ -179,7 +194,13 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={closeMobileMenu}
+                onClick={(e) => {
+                  closeMobileMenu();
+                  if (link.forceReload) {
+                    e.preventDefault();
+                    window.location.href = link.href;
+                  }
+                }}
                 className="py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37] transition-colors"
               >
                 {link.label}
@@ -220,9 +241,13 @@ export function Header() {
             </a>
 
             <Link
-              href="#booking"
-              onClick={closeMobileMenu}
-              className="py-4 rounded-full bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
+                href="?be-booking-open=true"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeMobileMenu();
+                  window.location.href = '?be-booking-open=true';
+                }}
+                className="py-4 rounded-full bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
             >
               {t.nav.bookNow}
             </Link>

@@ -31,7 +31,7 @@ export function Footer() {
     { href: '#restaurant', label: t.nav.restaurant },
     { href: '#garden', label: t.nav.garden },
     { href: '#gallery', label: t.nav.gallery },
-    { href: '#booking', label: t.nav.booking },
+    { href: '?be-booking-open=true', label: t.nav.booking, forceReload: true },
     { href: '#contact', label: t.nav.contact },
   ];
 
@@ -99,6 +99,12 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => {
+                    if (link.forceReload) {
+                      e.preventDefault();
+                      window.location.href = link.href;
+                    }
+                  }}
                   className="block text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors"
                 >
                   {link.label}
