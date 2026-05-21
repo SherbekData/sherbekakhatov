@@ -432,7 +432,7 @@ export function Booking() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange('phone')}
-                      placeholder="+998 55 405 88 88"
+                      placeholder="+998 87 337 88 88"
                       autoComplete="tel"
                       className={cn(
                         'w-full rounded-2xl border bg-white/5 px-4 py-4 text-[#f5f0e8] focus:outline-none transition-colors placeholder:text-[#f5f0e8]/30',
@@ -471,7 +471,7 @@ export function Booking() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a
-                    href="tel:+998 55 405 88 88"
+                    href="tel:+998 88 337 88 88"
                     className="py-4 rounded-full border border-[#f5f0e8]/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4 h-4" />
@@ -479,7 +479,7 @@ export function Booking() {
                   </a>
 
                   <a
-                    href="https://t.me/UzexAgro"
+                    href="https://t.me/MirakiGardens"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-4 rounded-full border border-[#f5f0e8]/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
