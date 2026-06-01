@@ -23,7 +23,7 @@ const rooms = [
     amenities: ['wifi', 'ac', 'view'] as const,
   },
   {
-    key: 'luks' as const,
+    key: 'suite' as const,
     price: '1 800 000',
     capacity: '2',
     image:
@@ -31,23 +31,14 @@ const rooms = [
     amenities: ['wifi', 'ac', 'view', 'terrace'] as const,
   },
   {
-    key: 'bunker' as const,
+    key: 'president' as const,
     price: '2 000 000',
     capacity: '4',
     image:
       'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1600&auto=format&fit=crop',
     amenities: ['wifi', 'ac', 'underground', 'minibar'] as const,
   },
-  {
-    key: 'hobbit' as const,
-    price: '2 200 000',
-    capacity: '4',
-    image:
-      'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1600&auto=format&fit=crop',
-    amenities: ['wifi', 'ac', 'underground', 'terrace', 'minibar'] as const,
-  },
 ];
-
 const amenityIcons = {
   wifi: Wifi,
   ac: Thermometer,
