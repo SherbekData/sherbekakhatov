@@ -57,17 +57,13 @@ export const translations = {
           name: 'Standard Room',
           description: 'Elegant comfort with garden views and premium amenities for a serene mountain escape.',
         },
-        luks: {
-          name: 'Luks Suite',
+        suite: {
+          name: 'Suite',
           description: 'Spacious luxury with private terrace overlooking the vineyards and lavender fields.',
         },
-        bunker: {
-          name: 'Bunker Hall',
+        president: {
+          name: 'President Suite',
           description: 'Unique underground retreat offering complete privacy and natural temperature control.',
-        },
-        hobbit: {
-          name: 'Hobbit Luks',
-          description: 'Our signature earth-sheltered suite blending fantasy with ultimate luxury.',
         },
       },
       amenities: {
@@ -108,7 +104,7 @@ export const translations = {
         },
         lavender: {
           title: 'Lavender Fields',
-          description: 'Immerse yourself in the calming purple haze of our expansive lavender meadows.',
+          description: 'Feel the calm and fragrant atmosphere of lavender fields.',
         },
         nature: {
           title: 'Mountain Trails',
@@ -123,15 +119,15 @@ export const translations = {
       items: {
         air: {
           title: 'Fresh Mountain Air',
-          description: 'Breathe pure, crisp air at our elevated mountain sanctuary.',
+          description: 'Enjoy the clean mountain air.',
         },
         walks: {
-          title: 'Scenic Nature Walks',
-          description: 'Explore curated paths through gardens, vineyards, and forests.',
+          title: 'Relax in Nature',
+          description: 'Enjoy your time among gardens and vineyards.',
         },
         relaxation: {
           title: 'Garden Relaxation',
-          description: 'Find your peaceful corner among blooming gardens and ancient trees.',
+          description: 'Experience the serenity of nature.',
         },
         lavender: {
           title: 'Lavender Wellness',
@@ -143,7 +139,7 @@ export const translations = {
         },
         privacy: {
           title: 'Ultimate Privacy',
-          description: 'Escape to exclusive accommodations designed for tranquility.',
+          description: 'Exclusive rooms designed for peace and relaxation.',
         },
         photo: {
           title: 'Photo-Perfect',
@@ -177,7 +173,7 @@ export const translations = {
     },
     // Booking
     booking: {
-      subtitle: 'Reserve Your Escape',
+      subtitle: 'Book your room now',
       title: 'Book Your Stay',
       description: 'Begin your journey to tranquility. Complete the form below and our concierge will confirm your reservation.',
       form: {
@@ -200,7 +196,7 @@ export const translations = {
       subtitle: 'Get in Touch',
       title: 'Contact Us',
       address: 'Uloch MFY, Shahrisabz District, Uzbekistan',
-      phone: '+998 55 405 88 88',
+      phone: '+998 87 337 88 88',
       email: 'info@mirakigarden.com',
       cta: 'Send Message',
     },
@@ -270,17 +266,13 @@ export const translations = {
           name: 'Стандарт',
           description: 'Элегантный комфорт с видом на сад и премиум удобствами для спокойного горного отдыха.',
         },
-        luks: {
-          name: 'Люкс',
+        suite: {
+          name: 'Сюит',
           description: 'Просторный номер с частной террасой с видом на виноградники и лавандовые поля.',
         },
-        bunker: {
-          name: 'Бункер Холл',
+        president: {
+          name: 'Президентский сюит',
           description: 'Уникальное подземное убежище с полной приватностью и естественной терморегуляцией.',
-        },
-        hobbit: {
-          name: 'Хоббит Люкс',
-          description: 'Наш фирменный номер в земле, сочетающий фантазию с абсолютной роскошью.',
         },
       },
       amenities: {
@@ -296,7 +288,7 @@ export const translations = {
     restaurant: {
       subtitle: 'Кулинарное мастерство',
       title: 'Кухня из сада',
-      description: 'Наш ресторан на 120 мест прославляет ��огатство наших садов изысканной кухней, которая чтит местные традиции, принимая современное мастерство.',
+      description: 'Наш ресторан на 120 мест прославляет богатство наших садов изысканной кухней, которая чтит местные традиции, принимая современное мастерство.',
       features: {
         views: 'Панорамные виды на горы',
         fresh: 'Свежие продукты из сада',
@@ -321,7 +313,7 @@ export const translations = {
         },
         lavender: {
           title: 'Лавандовые поля',
-          description: 'Погрузитесь в успокаивающую фиолетовую дымку наших лавандовых лугов.',
+          description: 'Почувствуйте спокойствие и ароматную атмосферу лавандовых полей.',
         },
         nature: {
           title: 'Горные тропы',
@@ -336,15 +328,15 @@ export const translations = {
       items: {
         air: {
           title: 'Свежий горный воздух',
-          description: 'Дышите чистым воздухом в нашем горном убежище.',
+          description: 'Насладитесь чистым горным воздухом.',
         },
         walks: {
-          title: 'Живописные прогулки',
-          description: 'Исследуйте тропы через сады, виноградники и леса.',
+          title: 'Отдых на лоне природы',
+          description: 'Насладитесь отдыхом среди садов и виноградников.',
         },
         relaxation: {
           title: 'Отдых в саду',
-          description: 'Найдите свой уголок покоя среди цветущих садов.',
+          description: 'Насладитесь спокойствием в объятиях природы',
         },
         lavender: {
           title: 'Лавандовый велнес',
@@ -356,7 +348,7 @@ export const translations = {
         },
         privacy: {
           title: 'Полная приватность',
-          description: 'Уединитесь в эксклюзивных номерах для спокойствия.',
+          description: 'Эксклюзивные номера для спокойного и комфортного отдыха.',
         },
         photo: {
           title: 'Фотогеничность',
@@ -390,7 +382,7 @@ export const translations = {
     },
     // Booking
     booking: {
-      subtitle: 'Забронируйте отдых',
+      subtitle: 'Забронируйте свой номер прямо сейчас',
       title: 'Забронировать',
       description: 'Начните свой путь к спокойствию. Заполните форму, и наш консьерж подтвердит бронирование.',
       form: {
@@ -413,7 +405,7 @@ export const translations = {
       subtitle: 'Свяжитесь с нами',
       title: 'Контакты',
       address: 'Улоч МФЙ, Шахрисабзский район, Узбекистан',
-      phone: '+998 55 405 88 88',
+      phone: '+998 87 337 88 88',
       email: 'info@mirakigarden.com',
       cta: 'Отправить сообщение',
     },
@@ -483,17 +475,13 @@ export const translations = {
           name: "Standart",
           description: "Bog' manzarasi va premium qulayliklar bilan nafis qulaylik.",
         },
-        luks: {
-          name: "Lyuks",
+        suite: {
+          name: "Suite",
           description: "Uzumzorlar va lavanda dalalariga qaragan shaxsiy terassa bilan keng xona.",
         },
-        bunker: {
-          name: "Bunker Hall",
+        president: {
+          name: "Prezident Suite",
           description: "To'liq maxfiylik va tabiiy harorat nazorati bilan noyob yer osti boshpanasi.",
-        },
-        hobbit: {
-          name: "Hobbit Lyuks",
-          description: "Fantaziya va mutlaq hashamatni birlashtirgan imzo yer osti xonamiz.",
         },
       },
       amenities: {
@@ -548,16 +536,16 @@ export const translations = {
       title: "Yuqori tajribalar",
       items: {
         air: {
-          title: "Toza tog' havosi",
-          description: "Tog' boshpanamizdagi toza havoni nafas oling.",
+          title: "Musaffo tog' havosi",
+          description: "Tog'larning musaffo havosidan bahramand bo'ling.",
         },
         walks: {
-          title: "Chiroyli sayrlar",
-          description: "Bog'lar, uzumzorlar va o'rmonlar orqali yo'llarni o'rganing.",
+          title: "Tabiat qo'ynida dam olish",
+          description: "Bog'lar va uzumzorlar orasida maroqli vaqt o'tkazing.",
         },
         relaxation: {
           title: "Bog'da dam olish",
-          description: "Gullaydigan bog'lar orasida tinchlik burchagingizni toping.",
+          description: "Tabiat qo‘ynidagi osoyishtalikdan bahramand bo‘ling.",
         },
         lavender: {
           title: "Lavanda salomatligi",
@@ -569,7 +557,7 @@ export const translations = {
         },
         privacy: {
           title: "To'liq maxfiylik",
-          description: "Tinchlik uchun mo'ljallangan eksklyuziv xonalarga qoching.",
+          description: "Tinchlik uchun mo'ljallangan eksklyuziv xonalar.",
         },
         photo: {
           title: "Fotogenlik",
@@ -603,7 +591,7 @@ export const translations = {
     },
     // Booking
     booking: {
-      subtitle: "Qochishingizni bron qiling",
+      subtitle: "Xonangizni hoziroq bron qiling",
       title: "Bron qilish",
       description: "Tinchlikka sayohatingizni boshlang. Quyidagi shaklni to'ldiring va konsyerjimiz broningizni tasdiqlaydi.",
       form: {
@@ -626,13 +614,13 @@ export const translations = {
       subtitle: "Biz bilan bog'laning",
       title: "Aloqa",
       address: "Uloch MFY, Shahrisabz tumani, O'zbekiston",
-      phone: "+998 55 405 88 88",
+      phone: "+998 87 337 88 88",
       email: "info@mirakigarden.com",
       cta: "Xabar yuborish",
     },
     // Footer
     footer: {
-      tagline: "Hashamatli tog' bog' dam olish maskani",
+      tagline: "Hashamatli tog' va bog' dam olish maskani",
       copyright: "Barcha huquqlar himoyalangan.",
       links: {
         privacy: "Maxfiylik siyosati",
