@@ -120,7 +120,7 @@ export function Rooms() {
         </div>
 
         {/* Rooms Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 lg:gap-10">
           {rooms.map((room, index) => {
             const roomData = t.rooms.types[room.key];
 
@@ -173,7 +173,7 @@ export function Rooms() {
                   </div>
 
                   {/* Amenities */}
-                  <div className="grid grid-cols-2 gap-3 mb-6 sm:mb-8">
+                  <div className="grid grid-cols-3 gap-3 mb-6 sm:mb-8">
                     {room.amenities.map((amenity) => {
                       const Icon = amenityIcons[amenity];
 
