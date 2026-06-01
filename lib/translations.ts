@@ -15,8 +15,8 @@ export const translations = {
     },
     // Hero
     hero: {
-      title: 'Miraki Garden',
-      subtitle: 'Luxury Mountain Garden Retreat in Shahrisabz',
+      title: 'Miraki Gardens',
+      subtitle: 'Luxury Mountain Gardens Retreat in Shahrisabz',
       description: 'Discover an exclusive sanctuary atop the mountains, where 500 hectares of pristine gardens, vineyards, and lavender fields meet refined hospitality and fresh mountain air.',
       explore: 'Explore the Resort',
       scroll: 'Scroll to discover',
@@ -25,7 +25,7 @@ export const translations = {
     about: {
       subtitle: 'Our Story',
       title: 'A Sanctuary Above the Clouds',
-      description: 'Perched atop the majestic mountains of Shahrisabz, Miraki Garden is more than a resort—it is a philosophy of living in harmony with nature. Our 500-hectare estate encompasses lush vineyards, fragrant orchards, and endless lavender fields, creating an atmosphere of unparalleled tranquility.',
+      description: 'Perched atop the majestic mountains of Shahrisabz, Miraki Gardens is more than a resort—it is a philosophy of living in harmony with nature. Our 500-hectare estate encompasses lush vineyards, fragrant orchards, and endless lavender fields, creating an atmosphere of unparalleled tranquility.',
       features: {
         mountain: {
           title: 'Mountain Summit',
@@ -95,8 +95,8 @@ export const translations = {
       description: 'Wander through 500 hectares of natural beauty, where every path leads to a new discovery.',
       experiences: {
         vineyard: {
-          title: 'Vineyard Walks',
-          description: 'Stroll through our estate vineyards and taste wines crafted from our own grapes.',
+          title: 'Pleasant Vineyard Walk',
+          description: 'Walk through our vineyards and taste premium wines.',
         },
         orchard: {
           title: 'Orchard Harvest',
@@ -224,7 +224,7 @@ export const translations = {
     },
     // Hero
     hero: {
-      title: 'Miraki Garden',
+      title: 'Miraki Gardens',
       subtitle: 'Роскошный горный курорт в Шахрисабзе',
       description: 'Откройте для себя эксклюзивное убежище на вершине гор, где 500 гектаров первозданных садов, виноградников и лавандовых полей встречаются с изысканным гостеприимством и свежим горным воздухом.',
       explore: 'Исследовать курорт',
@@ -234,7 +234,7 @@ export const translations = {
     about: {
       subtitle: 'Наша история',
       title: 'Убежище над облаками',
-      description: 'Расположенный на вершине величественных гор Шахрисабза, Miraki Garden — это больше, чем курорт, это философия жизни в гармонии с природой. Наше поместье площадью 500 гектаров включает пышные виноградники, ароматные сады и бескрайние лавандовые поля, создающие атмосферу непревзойденного спокойствия.',
+      description: 'Расположенный на вершине величественных гор Шахрисабза, Miraki Gardens — это больше, чем курорт, это философия жизни в гармонии с природой. Наше поместье площадью 500 гектаров включает пышные виноградники, ароматные сады и бескрайние лавандовые поля, создающие атмосферу непревзойденного спокойствия.',
       features: {
         mountain: {
           title: 'Горная вершина',
@@ -304,8 +304,8 @@ export const translations = {
       description: 'Прогуляйтесь по 500 гектарам природной красоты, где каждая тропинка ведет к новому открытию.',
       experiences: {
         vineyard: {
-          title: 'Прогулки по виноградникам',
-          description: 'Прогуляйтесь по нашим виноградникам и попробуйте вина из нашего винограда.',
+          title: 'Приятная прогулка по виноградникам',
+          description: 'Прогуляйтесь по нашим виноградникам и попробуйте премиальные вина.',
         },
         orchard: {
           title: 'Сбор урожая',
@@ -433,7 +433,7 @@ export const translations = {
     },
     // Hero
     hero: {
-      title: "Miraki Garden",
+      title: "Miraki Gardens",
       subtitle: "Shahrisabzda hashamatli tog' bog' dam olish maskani",
       description: "Tog'lar cho'qqisidagi eksklyuziv boshpanani kashf eting, bu yerda 500 gektar toza bog'lar, uzumzorlar va lavanda dalalari nafis mehmondo'stlik va toza tog' havosi bilan uyg'unlashadi.",
       explore: "Kurortni ko'rish",
@@ -443,7 +443,7 @@ export const translations = {
     about: {
       subtitle: "Bizning hikoyamiz",
       title: "Bulutlar ustidagi boshpana",
-      description: "Shahrisabzning ulug'vor tog'lari cho'qqisida joylashgan Miraki Garden — bu shunchaki kurort emas, balki tabiat bilan uyg'unlikda yashash falsafasidir. Bizning 500 gektarlik mulkimiz yam-yashil uzumzorlar, xushbo'y bog'lar va cheksiz lavanda dalalarini o'z ichiga oladi.",
+      description: "Shahrisabzning ulug'vor tog'lari cho'qqisida joylashgan Miraki Gardens — bu shunchaki kurort emas, balki tabiat bilan uyg'unlikda yashash falsafasidir. Bizning 500 gektarlik mulkimiz yam-yashil uzumzorlar, xushbo'y bog'lar va cheksiz lavanda dalalarini o'z ichiga oladi.",
       features: {
         mountain: {
           title: "Tog' cho'qqisi",
@@ -513,8 +513,8 @@ export const translations = {
       description: "500 gektar tabiiy go'zallik bo'ylab sayr qiling, har bir yo'l yangi kashfiyotga olib boradi.",
       experiences: {
         vineyard: {
-          title: "Uzumzor sayohati",
-          description: "Mulk uzumzorlarimizda sayr qiling va o'zimiz yetishtirgan uzumdan tayyorlangan vinolarni tatib ko'ring.",
+          title: "Uzumzorlar bo‘ylab maroqli sayr",
+          description: "Uzumzorlarimizda sayr qiling va premium vinolardan tatib ko‘ring.",
         },
         orchard: {
           title: "Hosil yig'ish",
