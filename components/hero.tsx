@@ -1,11 +1,11 @@
 'use client';
 
 import { useLanguage } from '@/lib/language-context';
-import { ChevronDown, MapPin, Mountain, Phone, Trees } from 'lucide-react';
+import { ChevronDown, MapPin, Mountain, Phone, TreeDeciduous } from 'lucide-react';
 import Link from 'next/link';
 
 const highlights = [
-  { value: '500', label: 'hectares', icon: Trees },
+  { value: '500', label: 'hectares', icon: TreeDeciduous },
   { value: '15', label: 'min from Shahrisabz', icon: MapPin },
   { value: '4', label: 'room types', icon: Mountain },
 ];
