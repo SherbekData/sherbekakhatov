@@ -18,11 +18,11 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const phoneHref = `tel:${t.contact.phone.replace(/\s/g, '')}`;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -52,8 +52,8 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled || isMobileMenuOpen
-            ? 'bg-[#1a3328]/95 backdrop-blur-xl shadow-lg'
-            : 'bg-transparent'
+            ? 'bg-[#10261d]/94 backdrop-blur-xl shadow-lg shadow-black/10'
+            : 'bg-gradient-to-b from-[#10261d]/60 to-transparent'
         )}
       >
         <div
@@ -62,15 +62,13 @@ export function Header() {
             isScrolled || isMobileMenuOpen ? 'h-16' : 'h-20'
           )}
         >
-          {/* Logo */}
           <Link href="#home" onClick={closeMobileMenu} className="relative z-50">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-wide text-[#f5f0e8]">
-              Miraki Garden
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-normal text-[#f5f0e8]">
+              Miraki Gardens
             </h1>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -81,19 +79,18 @@ export function Header() {
                     window.location.href = link.href;
                   }
                 }}
-                className="text-sm tracking-widest uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:text-[#d4af37] transition-colors duration-300"
+                className="text-xs tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/82 hover:text-[#d4af37] transition-colors duration-300"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4">
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-2 text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:text-[#d4af37] transition-colors"
+                className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:text-[#d4af37] transition-colors"
                 aria-label="Change language"
               >
                 {languages.find((l) => l.code === language)?.label}
@@ -106,7 +103,7 @@ export function Header() {
               </button>
 
               {isLangOpen && (
-                <div className="absolute top-full right-0 mt-3 bg-[#1a3328]/95 backdrop-blur-xl rounded-xl overflow-hidden shadow-xl min-w-[110px] border border-white/10">
+                <div className="absolute top-full right-0 mt-3 bg-[#10261d]/96 backdrop-blur-xl rounded-lg overflow-hidden shadow-xl min-w-[110px] border border-white/10">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -129,59 +126,41 @@ export function Header() {
             </div>
 
             <Link
-                href="?be-booking-open=true"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = '?be-booking-open=true';
-                }}
-              className="booking-link px-6 py-3 bg-[#d4af37] text-[#1a3328] text-sm tracking-widest uppercase font-[family-name:var(--font-montserrat)] font-semibold rounded-full hover:bg-[#c9a430] transition-colors duration-300"
+              href="?be-booking-open=true"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '?be-booking-open=true';
+              }}
+              className="booking-link rounded-lg bg-[#d4af37] px-5 py-3 text-[#1a3328] text-xs tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-colors duration-300"
             >
               {t.nav.bookNow}
             </Link>
           </div>
 
-          {/* Mobile Quick Actions */}
           <div className="lg:hidden flex items-center gap-2 relative z-50">
             <a
-              href="tel:+998XXXXXXXXX"
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
-              aria-label="Call Miraki Garden"
+              href={phoneHref}
+              className="w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
+              aria-label="Call Miraki Gardens"
             >
               <Phone className="w-5 h-5" />
             </a>
 
-            <Link
-                href="?be-booking-open=true"
-                onClick={(e) => {
-                  e.preventDefault();
-                  closeMobileMenu();
-                  window.location.href = '?be-booking-open=true';
-                }}
-              className="hidden xs:inline-flex px-4 py-2 rounded-full bg-[#d4af37] text-[#1a3328] text-xs font-semibold uppercase tracking-wider"
-            >
-              {t.nav.bookNow}
-            </Link>
-
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
+              className="w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
               aria-label="Open menu"
               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <div
         className={cn(
-          'lg:hidden fixed inset-0 z-40 bg-[#1a3328] transition-all duration-300',
+          'lg:hidden fixed inset-0 z-40 bg-[#10261d] transition-all duration-300',
           isMobileMenuOpen
             ? 'opacity-100 visible translate-y-0'
             : 'opacity-0 invisible -translate-y-4'
@@ -207,7 +186,6 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Mobile Language */}
           <div className="mt-6">
             <p className="mb-3 text-xs uppercase tracking-[0.25em] text-[#f5f0e8]/50">
               Language
@@ -218,7 +196,7 @@ export function Header() {
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={cn(
-                    'py-3 rounded-full text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] transition-colors border',
+                    'py-3 rounded-lg text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] transition-colors border',
                     language === lang.code
                       ? 'bg-[#d4af37] border-[#d4af37] text-[#1a3328]'
                       : 'border-white/15 text-[#f5f0e8]/80'
@@ -230,23 +208,22 @@ export function Header() {
             </div>
           </div>
 
-          {/* Mobile Bottom CTAs */}
           <div className="grid grid-cols-2 gap-3 mt-6">
             <a
-              href="tel:+998873378888"
-              className="py-4 rounded-full border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
+              href={phoneHref}
+              className="py-4 rounded-lg border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
             >
               Call
             </a>
 
             <Link
-                href="?be-booking-open=true"
-                onClick={(e) => {
-                  e.preventDefault();
-                  closeMobileMenu();
-                  window.location.href = '?be-booking-open=true';
-                }}
-                className="py-4 rounded-full bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
+              href="?be-booking-open=true"
+              onClick={(e) => {
+                e.preventDefault();
+                closeMobileMenu();
+                window.location.href = '?be-booking-open=true';
+              }}
+              className="py-4 rounded-lg bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
             >
               {t.nav.bookNow}
             </Link>
