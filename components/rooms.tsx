@@ -98,7 +98,7 @@ export function Rooms() {
               <article
                 key={room.key}
                 className={cn(
-                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/8 shadow-2xl shadow-black/10',
+                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/[0.08] shadow-2xl shadow-black/10',
                   isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 )}
                 style={{ transitionDelay: `${300 + index * 120}ms` }}
