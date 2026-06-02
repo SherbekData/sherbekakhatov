@@ -25,15 +25,15 @@ export function Hero() {
             backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#10261d]/95 via-[#1a3328]/72 to-[#1a3328]/24" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#10261d]/95 via-[#1a3328]/70 to-[#1a3328]/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328] via-transparent to-[#10261d]/55" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-[calc(92svh-5rem)] flex items-center">
         <div className="max-w-3xl py-16 sm:py-20 text-left">
-          <div className="inline-flex items-center gap-3 mb-6 rounded-full border border-[#d4af37]/35 bg-[#10261d]/45 px-4 py-2 backdrop-blur-md animate-fade-up">
+          <div className="inline-flex items-center gap-3 mb-6 rounded-full border border-[#d4af37]/30 bg-[#10261d]/45 px-4 py-2 backdrop-blur-md animate-fade-up">
             <MapPin className="h-4 w-4 text-[#d4af37]" />
-            <span className="font-[family-name:var(--font-montserrat)] text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[#f5f0e8]/82">
+            <span className="font-[family-name:var(--font-montserrat)] text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[#f5f0e8]/80">
               Shahrisabz mountain retreat
             </span>
           </div>
@@ -46,7 +46,7 @@ export function Hero() {
             {t.hero.subtitle}
           </p>
 
-          <p className="max-w-2xl text-[#f5f0e8]/82 text-base sm:text-lg md:text-xl leading-relaxed mb-8 animate-fade-up animation-delay-300">
+          <p className="max-w-2xl text-[#f5f0e8]/80 text-base sm:text-lg md:text-xl leading-relaxed mb-8 animate-fade-up animation-delay-300">
             {t.hero.description}
           </p>
 
@@ -77,11 +77,11 @@ export function Hero() {
               return (
                 <div
                   key={item.label}
-                  className="rounded-lg border border-[#f5f0e8]/12 bg-[#10261d]/42 p-4 backdrop-blur-md"
+                  className="rounded-lg border border-[#f5f0e8]/10 bg-[#10261d]/40 p-4 backdrop-blur-md"
                 >
                   <Icon className="mb-3 h-5 w-5 text-[#d4af37]" />
                   <div className="text-2xl font-medium text-[#f5f0e8]">{item.value}</div>
-                  <div className="mt-1 font-[family-name:var(--font-montserrat)] text-[11px] uppercase tracking-[0.16em] text-[#f5f0e8]/56">
+                  <div className="mt-1 font-[family-name:var(--font-montserrat)] text-[11px] uppercase tracking-[0.16em] text-[#f5f0e8]/55">
                     {item.label}
                   </div>
                 </div>
