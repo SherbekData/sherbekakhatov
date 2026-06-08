@@ -16,7 +16,6 @@ import {
 const rooms = [
   {
     key: 'standard' as const,
-    price: '1 400 000',
     capacity: '2',
     image:
       'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop',
@@ -24,7 +23,6 @@ const rooms = [
   },
   {
     key: 'suite' as const,
-    price: '1 800 000',
     capacity: '2',
     image:
       'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1600&auto=format&fit=crop',
@@ -32,7 +30,6 @@ const rooms = [
   },
   {
     key: 'president' as const,
-    price: '2 000 000',
     capacity: '4',
     image:
       'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1600&auto=format&fit=crop',
@@ -82,7 +79,7 @@ export function Rooms() {
 
           <p
             className={cn(
-              'mx-auto max-w-2xl text-[#f5f0e8]/68 text-base sm:text-lg md:text-xl leading-relaxed transition-all duration-700 delay-200',
+              'mx-auto max-w-2xl text-[#f5f0e8]/70 text-base sm:text-lg md:text-xl leading-relaxed transition-all duration-700 delay-200',
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             )}
           >
@@ -111,14 +108,6 @@ export function Rooms() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10261d] via-[#10261d]/25 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-lg bg-[#d4af37] px-3 py-2 shadow-lg">
-                    <span className="block text-[#1a3328] text-sm font-[family-name:var(--font-montserrat)] font-bold leading-none">
-                      {room.price}
-                    </span>
-                    <span className="mt-1 block text-[#1a3328]/70 text-[10px] uppercase tracking-[0.14em] font-[family-name:var(--font-montserrat)]">
-                      UZS / {t.rooms.perNight}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="p-5 sm:p-6 lg:p-7">
@@ -126,7 +115,7 @@ export function Rooms() {
                     <h3 className="text-2xl text-[#f5f0e8] font-medium">
                       {roomData.name}
                     </h3>
-                    <div className="flex shrink-0 items-center gap-1.5 rounded-lg border border-[#f5f0e8]/10 px-2.5 py-1.5 text-[#f5f0e8]/68">
+                    <div className="flex shrink-0 items-center gap-1.5 rounded-lg border border-[#f5f0e8]/10 px-2.5 py-1.5 text-[#f5f0e8]/70">
                       <Users className="w-4 h-4 text-[#d4af37]" />
                       <span className="text-xs font-[family-name:var(--font-montserrat)]">
                         {room.capacity}
