@@ -111,14 +111,6 @@ export function Rooms() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10261d] via-[#10261d]/25 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-lg bg-[#d4af37] px-3 py-2 shadow-lg">
-                    <span className="block text-[#1a3328] text-sm font-[family-name:var(--font-montserrat)] font-bold leading-none">
-                      {room.price}
-                    </span>
-                    <span className="mt-1 block text-[#1a3328]/70 text-[10px] uppercase tracking-[0.14em] font-[family-name:var(--font-montserrat)]">
-                      UZS / {t.rooms.perNight}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="p-5 sm:p-6 lg:p-7">
