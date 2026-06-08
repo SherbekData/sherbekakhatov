@@ -12,7 +12,7 @@
 
 #block-search {
     position: static;
-    width: min(100% - 30px, 1180px);
+    width: min(calc(100% - 30px), 1180px);
     margin: 0 auto;
     border: 1px solid rgba(212, 175, 55, 0.28);
     border-radius: 8px;
@@ -48,6 +48,6 @@
     }
 
     #block-search {
-        width: min(100% - 30px, 960px);
+        width: min(calc(100% - 30px), 960px);
     }
 }
