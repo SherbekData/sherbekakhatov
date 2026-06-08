@@ -52,7 +52,7 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled || isMobileMenuOpen
-            ? 'bg-[#10261d]/94 backdrop-blur-xl shadow-lg shadow-black/10'
+            ? 'bg-[#10261d]/95 backdrop-blur-xl shadow-lg shadow-black/10'
             : 'bg-gradient-to-b from-[#10261d]/60 to-transparent'
         )}
       >
@@ -79,7 +79,7 @@ export function Header() {
                     window.location.href = link.href;
                   }
                 }}
-                className="text-xs tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/82 hover:text-[#d4af37] transition-colors duration-300"
+                className="text-xs tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/80 hover:text-[#d4af37] transition-colors duration-300"
               >
                 {link.label}
               </Link>
@@ -103,7 +103,7 @@ export function Header() {
               </button>
 
               {isLangOpen && (
-                <div className="absolute top-full right-0 mt-3 bg-[#10261d]/96 backdrop-blur-xl rounded-lg overflow-hidden shadow-xl min-w-[110px] border border-white/10">
+                <div className="absolute top-full right-0 mt-3 bg-[#10261d]/95 backdrop-blur-xl rounded-lg overflow-hidden shadow-xl min-w-[110px] border border-white/10">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
