@@ -12,7 +12,8 @@
 
 #block-search {
     position: static;
-    width: min(calc(100% - 30px), 1180px);
+    width: calc(100% - 30px);
+    max-width: 1180px;
     margin: 0 auto;
     border: 1px solid rgba(212, 175, 55, 0.28);
     border-radius: 8px;
@@ -48,6 +49,6 @@
     }
 
     #block-search {
-        width: min(calc(100% - 30px), 960px);
+        max-width: 960px;
     }
 }
