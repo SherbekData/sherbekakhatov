@@ -18,9 +18,8 @@ import {
 
 const roomTypes = [
   { key: 'standard', price: 1400000 },
-  { key: 'luks', price: 1800000 },
-  { key: 'bunker', price: 2000000 },
-  { key: 'hobbit', price: 2200000 },
+  { key: 'suite', price: 1800000 },
+  { key: 'president', price: 2200000 },
 ] as const;
 
 interface FormData {
@@ -259,7 +258,7 @@ export function Booking() {
                   {t.booking.form.success}
                 </p>
                 <p className="text-[#f5f0e8]/60 text-sm sm:text-base">
-                  Manager tez orada siz bilan bog‘lanadi.
+                  Manager tez orada siz bilan bog'lanadi.
                 </p>
               </div>
             ) : (
@@ -471,7 +470,7 @@ export function Booking() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a
-                    href="tel:+998 88 337 88 88"
+                    href="tel:+998873378888"
                     className="py-4 rounded-full border border-[#f5f0e8]/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4 h-4" />
