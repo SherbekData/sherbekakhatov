@@ -8,13 +8,11 @@ import { Gallery } from '@/components/gallery';
 import { Booking } from '@/components/booking';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
-import { SEO } from '@/components/seo';
-import BeSearchForm from "@/components/beForms/beSearchForm";
+import BeSearchForm from '@/components/beForms/beSearchForm';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <SEO />
       <Header />
       <Hero />
       <BeSearchForm />
@@ -23,7 +21,7 @@ export default function Home() {
       <Garden />
       <Amenities />
       <Gallery />
-      {/*<Booking />*/}
+      <Booking />
       <Contact />
       <Footer />
     </main>
