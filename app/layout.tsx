@@ -9,12 +9,14 @@ const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-cormorant',
+  display: 'swap',
 })
 
 const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-montserrat',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -25,13 +27,11 @@ export const metadata: Metadata = {
     template: '%s | Miraki Gardens',
   },
 
-  // ✅ Google da ko'rinadigan tavsif — kalit so'zlar ichida
   description:
-    "Shahrisabz dam olish maskani — Miraki Gardens. 500 gektar lavanda, uzumzor va tog' bag'rida hashamatli hobbit va bunker xonalari. Bron qiling!",
+    "Shahrisabz dam olish maskani — Miraki Gardens. 500 gektar lavanda, uzumzor va tog' bag'rida hashamatli Standart, Suite va Prezident Suite xonalari. Bron qiling!",
 
-  // ✅ Real qidiruvlarga asoslangan kalit so'zlar (O'zbek + Rus + Ingliz)
   keywords: [
-    // 🇺🇿 O'zbekcha — eng ko'p qidiriladigan
+    // O'zbekcha
     'Shahrisabz dam olish maskani',
     'Shahrisabz oromgoh',
     'Shahrisabz dacha',
@@ -39,33 +39,27 @@ export const metadata: Metadata = {
     'Miraki Garden',
     'Miraki Gardens',
     'Miraki Gardens Shahrisabz',
-    'hobbit xona Shahrisabz',
-    'hobbit xona Uzbekiston',
-    'bunker xona Shahrisabz',
     'lavanda bog Shahrisabz',
     'Shahrisabz tog kurort',
     'Shahrisabz hashamatli mehmonxona',
     'Qashqadaryo dam olish',
-
-    // 🇷🇺 Ruscha — rus turistlar
+    'prezident suite Shahrisabz',
+    // Ruscha
     'отдых в Шахрисабзе',
     'Шахрисабз отель',
     'Шахрисабз курорт',
     'Мираки Гарден',
     'отдых Узбекистан горы',
-    'хоббит номер Узбекистан',
-    'бункер номер Шахрисабз',
     'лаванда сад Узбекистан',
-
-    // 🇬🇧 Inglizcha — xorijiy turistlar
+    'президентский люкс Шахрисабз',
+    // Inglizcha
     'Shahrisabz resort',
     'Shahrisabz hotel',
     'luxury resort Uzbekistan',
-    'hobbit room Uzbekistan',
-    'bunker room Uzbekistan',
     'lavender garden Uzbekistan',
     'mountain resort Shahrisabz',
     'Miraki Garden Shahrisabz',
+    'president suite Uzbekistan',
   ],
 
   authors: [{ name: 'Miraki Gardens' }],
@@ -93,7 +87,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // ✅ Open Graph — Telegram, WhatsApp, Facebook da preview
   openGraph: {
     type: 'website',
     locale: 'uz_UZ',
@@ -102,10 +95,10 @@ export const metadata: Metadata = {
     siteName: 'Miraki Gardens',
     title: 'Miraki Gardens – Shahrisabz dam olish maskani',
     description:
-      "Shahrisabz dam olish maskani — Miraki Gardens. 500 gektar lavanda, uzumzor va tog' bag'rida hashamatli hobbit va bunker xonalari. Bron qiling!",
+      "Shahrisabz dam olish maskani — Miraki Gardens. 500 gektar lavanda, uzumzor va tog' bag'rida hashamatli xonalar. Bron qiling!",
     images: [
       {
-        url: '/images/og-image.jpg', // ⚠️ public/images/ ga 1200x630px rasm qo'ying
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Miraki Gardens – Shahrisabz dam olish maskani',
@@ -113,23 +106,21 @@ export const metadata: Metadata = {
     ],
   },
 
-  // / ✅ Twitter / X
   twitter: {
     card: 'summary_large_image',
     title: 'Miraki Gardens – Shahrisabz dam olish maskani',
     description:
-      "500 gektar lavanda, uzumzor va tog' bag'rida hashamatli hobbit va bunker xonalari. Shahrisabz, O'zbekiston.",
+      "500 gektar lavanda, uzumzor va tog' bag'rida hashamatli xonalar. Shahrisabz, O'zbekiston.",
     images: ['/images/og-image.jpg'],
   },
 
   other: {
     'theme-color': '#1a3328',
     'msapplication-TileColor': '#1a3328',
-    'google-site-verification': 'mo4N4HxO89XgY7bP1fQu9eU3MbyWp38wZxCqXOlwgVI'
+    'google-site-verification': 'mo4N4HxO89XgY7bP1fQu9eU3MbyWp38wZxCqXOlwgVI',
   },
 }
 
-// ✅ Google Rich Snippets — yulduzcha, narx, manzil
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -141,7 +132,7 @@ const jsonLd = {
       description:
         "Shahrisabzda hashamatli tog' bog' dam olish maskani. 500 gektar lavanda dalalari, uzumzorlar va tabiatda noyob xonalar.",
       url: 'https://miraki-garden.uz',
-      telephone: '+998554058888',
+      telephone: '+998873378888',
       email: 'info@mirakigarden.com',
       address: {
         '@type': 'PostalAddress',
@@ -152,15 +143,15 @@ const jsonLd = {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: '39.0500',
-        longitude: '66.8300',
+        latitude: '39.026111',
+        longitude: '67.079361',
       },
       image: 'https://miraki-garden.uz/images/og-image.jpg',
       priceRange: '1 400 000 – 2 200 000 UZS',
       currenciesAccepted: 'UZS',
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         opens: '00:00',
         closes: '23:59',
       },
@@ -172,10 +163,10 @@ const jsonLd = {
         { '@type': 'LocationFeatureSpecification', name: 'Vineyard', value: true },
         { '@type': 'LocationFeatureSpecification', name: 'Lavender Fields', value: true },
       ],
-      numberOfRooms: 4,
+      numberOfRooms: 3,
       starRating: { '@type': 'Rating', ratingValue: '5' },
       sameAs: [
-        'https://t.me/mirakigarden',
+        'https://t.me/MirakiGardens',
         'https://instagram.com/mirakigarden',
       ],
     },
@@ -204,7 +195,6 @@ export default function RootLayout({
   return (
     <html lang="uz" className="bg-background">
       <head>
-        {/* ✅ Google Rich Snippets */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -214,11 +204,8 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
-
-        {/* ✅ WhatsApp + Telegram floating tugmalar */}
         <FloatingContact />
-
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Analytics />
       </body>
     </html>
   )
