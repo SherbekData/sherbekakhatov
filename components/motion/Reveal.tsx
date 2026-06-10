@@ -1,8 +1,13 @@
 'use client';
 
-import { motion, type MotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+
+type ViewportOptions = {
+  once?: boolean;
+  amount?: number | 'some' | 'all';
+};
 
 type RevealProps = {
   children: ReactNode;
@@ -10,7 +15,8 @@ type RevealProps = {
   delay?: number;
   duration?: number;
   y?: number;
-} & Pick<MotionProps, 'viewport'>;
+  viewport?: ViewportOptions;
+};
 
 export function Reveal({
   children,
