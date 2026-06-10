@@ -85,15 +85,13 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    body {
+    body,
+    body.be-mobile-open {
         padding-bottom: 0;
     }
 
-    body.be-mobile-open {
-        padding-bottom: 190px;
-    }
-
     .sf-wrapper {
+        display: none;
         bottom: 10px;
         padding: 0 10px;
         opacity: 0;
@@ -103,6 +101,7 @@ body {
     }
 
     .sf-wrapper.is-mobile-open {
+        display: block;
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
