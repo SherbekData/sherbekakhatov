@@ -99,10 +99,10 @@ export function Rooms() {
               <article
                 key={room.key}
                 className={cn(
-                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 transition-all duration-200 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/[0.08] shadow-2xl shadow-black/10',
+                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 shadow-2xl shadow-black/10 transition-[opacity,transform] duration-700 hover:!transition-[border-color,background-color,transform] hover:!duration-150 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/[0.08]',
                   isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 )}
-                style={{ transitionDelay: `${300 + index * 120}ms` }}
+                style={{ transitionDelay: isInView ? '0ms' : `${300 + index * 120}ms` }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -136,7 +136,6 @@ export function Rooms() {
                   <div className="grid grid-cols-2 gap-2.5 mb-6 sm:mb-8">
                     {room.amenities.map((amenity) => {
                       const Icon = amenityIcons[amenity];
-
                       return (
                         <div
                           key={amenity}
@@ -156,7 +155,7 @@ export function Rooms() {
                       e.preventDefault();
                       window.location.href = '?be-booking-open=true';
                     }}
-                    className="w-full rounded-lg bg-[#d4af37] py-4 text-center text-[#1a3328] text-xs sm:text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-bold hover:bg-[#c9a430] transition-all duration-300 active:scale-[0.98]"
+                    className="w-full rounded-lg bg-[#d4af37] py-4 text-center text-[#1a3328] text-xs sm:text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-bold hover:bg-[#c9a430] transition-colors duration-150 active:scale-[0.98]"
                   >
                     {t.rooms.bookRoom}
                   </button>
