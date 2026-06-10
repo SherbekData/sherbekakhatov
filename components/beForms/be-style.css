@@ -14,18 +14,32 @@
     position: static;
     width: calc(100% - 30px);
     max-width: 1180px;
+    min-height: 112px;
     margin: 0 auto;
     border: 1px solid rgba(212, 175, 55, 0.28);
     border-radius: 8px;
     background: linear-gradient(180deg, #10261d 0%, #254234 100%);
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(18px);
+    overflow: visible;
+}
+
+.be-container,
+#be-search-form {
+    width: 100%;
+    min-height: 96px;
 }
 
 .be-container {
     max-width: 1260px;
     margin: 0 auto;
     padding: 14px 16px;
+    overflow: visible;
+}
+
+#be-search-form > a {
+    color: rgba(245, 240, 232, 0.65);
+    font-size: 12px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -50,5 +64,11 @@
 
     #block-search {
         max-width: 960px;
+        min-height: 132px;
+    }
+
+    .be-container,
+    #be-search-form {
+        min-height: 112px;
     }
 }
