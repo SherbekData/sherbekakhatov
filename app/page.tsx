@@ -5,8 +5,8 @@ import { Restaurant } from '@/components/restaurant';
 import { Garden } from '@/components/garden';
 import { Amenities } from '@/components/amenities';
 import { Gallery } from '@/components/gallery';
+import BeSearchForm from '@/components/beForms/beSearchForm';
 import { Contact } from '@/components/contact';
-import { Booking } from '@/components/booking';
 import { Footer } from '@/components/footer';
 
 export default function Home() {
@@ -14,12 +14,12 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <BeSearchForm />
       <Rooms />
       <Restaurant />
       <Garden />
       <Amenities />
       <Gallery />
-      <Booking />
       <Contact />
       <Footer />
     </main>
