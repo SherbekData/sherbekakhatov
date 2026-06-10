@@ -8,6 +8,7 @@ import "./be-style.css";
 function BeSearchForm() {
   const { language } = useLanguage();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [shouldLoadForm, setShouldLoadForm] = useState(false);
 
   const searchForm = (w: any) => {
     // @ts-ignore
@@ -31,11 +32,26 @@ function BeSearchForm() {
   };
 
   useEffect(() => {
-    searchForm(window);
-  }, [language]);
+    const mediaQuery = window.matchMedia('(min-width: 769px)');
+    const syncFormLoading = () => setShouldLoadForm(mediaQuery.matches);
+
+    syncFormLoading();
+    mediaQuery.addEventListener('change', syncFormLoading);
+
+    return () => mediaQuery.removeEventListener('change', syncFormLoading);
+  }, []);
 
   useEffect(() => {
-    const openBooking = () => setIsMobileOpen(true);
+    if (!shouldLoadForm) return;
+
+    searchForm(window);
+  }, [language, shouldLoadForm]);
+
+  useEffect(() => {
+    const openBooking = () => {
+      setShouldLoadForm(true);
+      setIsMobileOpen(true);
+    };
 
     window.addEventListener('miraki:open-booking', openBooking);
 
@@ -48,12 +64,17 @@ function BeSearchForm() {
     return () => document.body.classList.remove('be-mobile-open');
   }, [isMobileOpen]);
 
+  const openMobileBooking = () => {
+    setShouldLoadForm(true);
+    setIsMobileOpen(true);
+  };
+
   return (
     <>
       <button
         type="button"
         className={`be-mobile-trigger${isMobileOpen ? ' is-hidden' : ''}`}
-        onClick={() => setIsMobileOpen(true)}
+        onClick={openMobileBooking}
         aria-controls="block-search"
         aria-expanded={isMobileOpen}
         aria-label="Xonani bron qilish"
