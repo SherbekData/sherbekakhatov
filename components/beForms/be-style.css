@@ -50,6 +50,11 @@ body {
     font-size: 12px;
 }
 
+.be-mobile-trigger,
+.be-mobile-close {
+    display: none;
+}
+
 @media screen and (max-width: 1280px) {
     body {
         padding-bottom: 174px;
@@ -81,21 +86,87 @@ body {
 
 @media screen and (max-width: 768px) {
     body {
+        padding-bottom: 0;
+    }
+
+    body.be-mobile-open {
         padding-bottom: 190px;
     }
 
     .sf-wrapper {
         bottom: 10px;
         padding: 0 10px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(calc(100% + 24px));
+        transition: opacity 240ms ease, transform 240ms ease, visibility 240ms ease;
+    }
+
+    .sf-wrapper.is-mobile-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     #block-search {
         width: 100%;
         min-height: 148px;
+        padding-top: 8px;
     }
 
     .be-container,
     #be-search-form {
         min-height: 128px;
+    }
+
+    .be-mobile-trigger {
+        position: fixed;
+        right: 18px;
+        bottom: calc(22px + env(safe-area-inset-bottom));
+        z-index: 46;
+        display: inline-flex;
+        width: 64px;
+        height: 64px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4058c9, #2437a8);
+        color: #ffffff;
+        box-shadow: 0 16px 34px rgba(36, 55, 168, 0.32);
+        transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .be-mobile-trigger svg {
+        width: 30px;
+        height: 30px;
+        stroke-width: 2.4;
+    }
+
+    .be-mobile-trigger.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px) scale(0.96);
+    }
+
+    .be-mobile-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(245, 240, 232, 0.2);
+        border-radius: 999px;
+        background: rgba(16, 38, 29, 0.86);
+        color: #f5f0e8;
+    }
+
+    .be-mobile-close svg {
+        width: 18px;
+        height: 18px;
     }
 }
