@@ -1,14 +1,15 @@
 'use client';
 
-import { motion, type MotionProps } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
+import type { CSSProperties, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 type AnimatedCardProps = {
   children: ReactNode;
   className?: string;
   lift?: number;
-} & Pick<MotionProps, 'style'>;
+  style?: CSSProperties;
+};
 
 export function AnimatedCard({ children, className, lift = 6, style }: AnimatedCardProps) {
   return (
