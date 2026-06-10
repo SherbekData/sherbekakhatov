@@ -13,7 +13,6 @@ import {
   CalendarCheck,
   Phone,
 } from 'lucide-react';
-import Link from 'next/link';
 
 const features = [
   { icon: Mountain, key: 'views' as const },
@@ -151,22 +150,13 @@ export function Restaurant() {
               })}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link
-                href="#booking"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#2a4338] transition-all duration-300"
-              >
-                {t.restaurant.cta}
-              </Link>
-
-              <a
-                href="tel:+998554058888"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-[#1a3328]/20 text-[#1a3328] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#1a3328]/5 transition-all duration-300"
-              >
-                <Phone className="w-4 h-4" />
-                Call
-              </a>
-            </div>
+            <a
+              href="tel:+998554058888"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#2a4338] transition-all duration-300"
+            >
+              <Phone className="w-4 h-4" />
+              {t.contact.phone}
+            </a>
           </div>
         </div>
       </div>
