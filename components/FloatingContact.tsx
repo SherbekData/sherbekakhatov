@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 const WHATSAPP_NUMBER = '998873378888'
 const WHATSAPP_MESSAGE = "Salom, Miraki Gardens haqida ma'lumot olmoqchiman"
-const TELEGRAM_USERNAME = 'MirakiGardens' // ⚠️ o'z username'ingizni yozing
+const TELEGRAM_USERNAME = 'MirakiGardens'
 
 export default function FloatingContact() {
   const [hovered, setHovered] = useState<'whatsapp' | 'telegram' | null>(null)
@@ -13,8 +13,7 @@ export default function FloatingContact() {
   const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}`
 
   return (
-    <div className="fixed bottom-6 right-5 flex flex-col gap-3 z-50">
-      {/* Telegram */}
+    <div className="fixed bottom-6 right-5 z-50 hidden 2xl:flex flex-col gap-3">
       <a
         href={telegramUrl}
         target="_blank"
@@ -41,7 +40,6 @@ export default function FloatingContact() {
           transform: hovered === 'telegram' ? 'translateY(-2px)' : 'translateY(0)',
         }}
       >
-        {/* Telegram SVG */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -61,7 +59,6 @@ export default function FloatingContact() {
         </span>
       </a>
 
-      {/* WhatsApp */}
       <a
         href={whatsappUrl}
         target="_blank"
@@ -88,7 +85,6 @@ export default function FloatingContact() {
           transform: hovered === 'whatsapp' ? 'translateY(-2px)' : 'translateY(0)',
         }}
       >
-        {/* WhatsApp SVG */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
