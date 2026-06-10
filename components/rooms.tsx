@@ -99,7 +99,7 @@ export function Rooms() {
               <article
                 key={room.key}
                 className={cn(
-                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/[0.08] shadow-2xl shadow-black/10',
+                  'group relative overflow-hidden rounded-lg border border-[#f5f0e8]/10 bg-[#f5f0e8]/5 transition-all duration-200 hover:-translate-y-1 hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/[0.08] shadow-2xl shadow-black/10',
                   isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 )}
                 style={{ transitionDelay: `${300 + index * 120}ms` }}
@@ -111,7 +111,7 @@ export function Rooms() {
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     priority={index === 0}
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10261d] via-[#10261d]/25 to-transparent" />
                 </div>
