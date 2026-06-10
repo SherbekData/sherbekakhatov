@@ -32,7 +32,7 @@ function BeSearchForm() {
   }, [language]);
 
   return (
-      <div className="sf-wrapper">
+      <div id="booking" className="sf-wrapper">
         <div id="block-search">
           <div id="be-search-form" className="be-container">
             <a href="https://exely.com/" rel="nofollow" target="_blank">Hotel management software</a>
