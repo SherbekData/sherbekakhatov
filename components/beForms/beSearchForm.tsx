@@ -36,14 +36,8 @@ function BeSearchForm() {
 
   useEffect(() => {
     const openBooking = () => setIsMobileOpen(true);
-    const params = new URLSearchParams(window.location.search);
 
     window.addEventListener('miraki:open-booking', openBooking);
-
-    if (params.get('be-booking-open') === 'true') {
-      setIsMobileOpen(true);
-      window.history.replaceState(null, '', `${window.location.pathname}${window.location.hash}`);
-    }
 
     return () => window.removeEventListener('miraki:open-booking', openBooking);
   }, []);
