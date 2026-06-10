@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/language-context';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import {
   Mountain,
   Leaf,
@@ -34,6 +35,7 @@ export function Restaurant() {
 
       <div ref={ref} className="container mx-auto px-4 sm:px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
           {/* Image Side */}
           <div
             className={cn(
@@ -42,13 +44,13 @@ export function Restaurant() {
             )}
           >
             <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop"
-                alt="Miraki Garden Restaurant"
-                loading="lazy"
-                className="w-full h-full object-cover"
+                alt="Miraki Gardens restoran – bog'dan dasturxonga"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
-
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328]/65 via-[#1a3328]/10 to-transparent" />
 
               {/* Mobile image label */}
@@ -59,7 +61,7 @@ export function Restaurant() {
                     <div>
                       <p className="text-[#d4af37] text-2xl font-semibold">120</p>
                       <p className="text-[#f5f0e8]/75 text-xs uppercase tracking-[0.2em]">
-                        o‘rinli restoran
+                        o'rinli restoran
                       </p>
                     </div>
                   </div>
@@ -76,13 +78,12 @@ export function Restaurant() {
                     120
                   </div>
                   <div className="text-[#f5f0e8]/70 text-xs lg:text-sm font-[family-name:var(--font-montserrat)] tracking-wider uppercase mt-2">
-                    o‘rinli restoran
+                    o'rinli restoran
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Decorative Frame */}
             <div className="hidden sm:block absolute -top-5 -left-5 w-full h-full border border-[#d4af37]/30 rounded-3xl -z-10" />
           </div>
 
@@ -110,7 +111,6 @@ export function Restaurant() {
               {t.restaurant.description}
             </p>
 
-            {/* Highlight Cards */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
               <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
                 <CalendarCheck className="w-5 h-5 text-[#d4af37] mb-3" />
@@ -122,12 +122,11 @@ export function Restaurant() {
               <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
                 <Leaf className="w-5 h-5 text-[#d4af37] mb-3" />
                 <p className="text-[#1a3328] text-sm font-medium">
-                  Bog‘dan dasturxonga
+                  Bog'dan dasturxonga
                 </p>
               </div>
             </div>
 
-            {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-9 sm:mb-10">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
@@ -144,7 +143,6 @@ export function Restaurant() {
                     <div className="w-11 h-11 rounded-full bg-[#1a3328] flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-[#d4af37]" />
                     </div>
-
                     <span className="text-[#1a3328] text-sm font-[family-name:var(--font-montserrat)] tracking-wider leading-snug">
                       {t.restaurant.features[feature.key]}
                     </span>
@@ -153,7 +151,6 @@ export function Restaurant() {
               })}
             </div>
 
-            {/* CTA */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="#booking"
