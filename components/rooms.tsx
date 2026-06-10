@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/language-context';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import {
   Wifi,
   Thermometer,
@@ -104,11 +105,13 @@ export function Rooms() {
                 style={{ transitionDelay: `${300 + index * 120}ms` }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <Image
                     src={room.image}
                     alt={roomData.name}
-                    loading={index > 1 ? 'lazy' : 'eager'}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={index === 0}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#10261d] via-[#10261d]/25 to-transparent" />
                 </div>
