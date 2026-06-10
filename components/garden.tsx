@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/language-context';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const experiences = [
   {
@@ -29,14 +30,12 @@ export function Garden() {
 
   return (
     <section id="garden" className="py-24 md:py-32 bg-[#1a3328] relative overflow-hidden">
-      {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#d4af37]/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#d4af37]/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div ref={ref} className="container mx-auto px-6 relative">
-        {/* Section Header */}
         <div className="text-center mb-20">
           <span className={cn(
             'inline-block text-[#d4af37] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)] font-medium mb-4 transition-all duration-700',
@@ -66,7 +65,6 @@ export function Garden() {
           </p>
         </div>
 
-        {/* Experiences Grid - Editorial Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Large Featured Card */}
           <div
@@ -76,14 +74,16 @@ export function Garden() {
             )}
             style={{ transitionDelay: '400ms' }}
           >
-            <img
+            <Image
               src={experiences[0].image}
               alt={t.garden.experiences[experiences[0].key].title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328] via-[#1a3328]/30 to-transparent" />
-            
-            {/* Content Overlay */}
+
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
               <div className="w-12 h-px bg-[#d4af37] mb-6 group-hover:w-20 transition-all duration-500" />
               <h3 className="text-2xl lg:text-3xl text-[#f5f0e8] font-medium mb-4">
@@ -94,7 +94,6 @@ export function Garden() {
               </p>
             </div>
 
-            {/* Hover Border */}
             <div className="absolute inset-4 border border-[#d4af37]/0 group-hover:border-[#d4af37]/30 transition-all duration-500 rounded-sm" />
           </div>
 
@@ -108,14 +107,16 @@ export function Garden() {
               )}
               style={{ transitionDelay: `${500 + index * 150}ms` }}
             >
-              <img
+              <Image
                 src={experience.image}
                 alt={t.garden.experiences[experience.key].title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328] via-[#1a3328]/20 to-transparent" />
-              
-              {/* Content Overlay */}
+
               <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
                 <div className="w-8 h-px bg-[#d4af37] mb-4 group-hover:w-12 transition-all duration-500" />
                 <h3 className="text-xl lg:text-2xl text-[#f5f0e8] font-medium mb-2">
@@ -126,13 +127,11 @@ export function Garden() {
                 </p>
               </div>
 
-              {/* Hover Border */}
               <div className="absolute inset-3 border border-[#d4af37]/0 group-hover:border-[#d4af37]/30 transition-all duration-500 rounded-sm" />
             </div>
           ))}
         </div>
 
-        {/* Stats Section */}
         <div className={cn(
           'mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-700',
           isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
