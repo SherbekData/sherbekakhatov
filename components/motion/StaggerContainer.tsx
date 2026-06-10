@@ -1,15 +1,21 @@
 'use client';
 
-import { motion, type MotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+
+type ViewportOptions = {
+  once?: boolean;
+  amount?: number | 'some' | 'all';
+};
 
 type StaggerContainerProps = {
   children: ReactNode;
   className?: string;
   delayChildren?: number;
   staggerChildren?: number;
-} & Pick<MotionProps, 'viewport'>;
+  viewport?: ViewportOptions;
+};
 
 export function StaggerContainer({
   children,
