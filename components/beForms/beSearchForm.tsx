@@ -1,11 +1,14 @@
 'use client';
-import React from 'react';
-import { useEffect } from "react";
+
+import React, { useEffect, useState } from 'react';
+import { KeyRound, X } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import "./be-style.css";
 
 function BeSearchForm() {
   const { language } = useLanguage();
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   const searchForm = (w: any) => {
     // @ts-ignore
     !function(e,n){
@@ -31,14 +34,56 @@ function BeSearchForm() {
     searchForm(window);
   }, [language]);
 
+  useEffect(() => {
+    const openBooking = () => setIsMobileOpen(true);
+    const params = new URLSearchParams(window.location.search);
+
+    window.addEventListener('miraki:open-booking', openBooking);
+
+    if (params.get('be-booking-open') === 'true') {
+      setIsMobileOpen(true);
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.hash}`);
+    }
+
+    return () => window.removeEventListener('miraki:open-booking', openBooking);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('be-mobile-open', isMobileOpen);
+
+    return () => document.body.classList.remove('be-mobile-open');
+  }, [isMobileOpen]);
+
   return (
-      <div id="booking" className="sf-wrapper">
+    <>
+      <button
+        type="button"
+        className={`be-mobile-trigger${isMobileOpen ? ' is-hidden' : ''}`}
+        onClick={() => setIsMobileOpen(true)}
+        aria-controls="block-search"
+        aria-expanded={isMobileOpen}
+        aria-label="Xonani bron qilish"
+      >
+        <KeyRound aria-hidden="true" />
+      </button>
+
+      <div id="booking" className={`sf-wrapper${isMobileOpen ? ' is-mobile-open' : ''}`}>
         <div id="block-search">
+          <button
+            type="button"
+            className="be-mobile-close"
+            onClick={() => setIsMobileOpen(false)}
+            aria-label="Bron formasini yopish"
+          >
+            <X aria-hidden="true" />
+          </button>
+
           <div id="be-search-form" className="be-container">
             <a href="https://exely.com/" rel="nofollow" target="_blank">Hotel management software</a>
           </div>
         </div>
       </div>
+    </>
   )
 }
 
