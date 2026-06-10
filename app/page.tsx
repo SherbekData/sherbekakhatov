@@ -8,6 +8,7 @@ import { Gallery } from '@/components/gallery';
 import BeSearchForm from '@/components/beForms/beSearchForm';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
+import { Reveal } from '@/components/motion/Reveal';
 
 export default function Home() {
   return (
@@ -15,12 +16,24 @@ export default function Home() {
       <Header />
       <Hero />
       <BeSearchForm />
-      <Rooms />
-      <Restaurant />
-      <Garden />
-      <Amenities />
-      <Gallery />
-      <Contact />
+      <Reveal>
+        <Rooms />
+      </Reveal>
+      <Reveal>
+        <Restaurant />
+      </Reveal>
+      <Reveal>
+        <Garden />
+      </Reveal>
+      <Reveal>
+        <Amenities />
+      </Reveal>
+      <Reveal>
+        <Gallery />
+      </Reveal>
+      <Reveal>
+        <Contact />
+      </Reveal>
       <Footer />
     </main>
   );
