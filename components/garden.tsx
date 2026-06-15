@@ -24,8 +24,37 @@ const experiences = [
   },
 ];
 
+const statValues = [
+  { value: '500', key: 'hectares' as const },
+  { value: '1,500m', key: 'elevation' as const },
+  { value: '100+', key: 'treeSpecies' as const },
+  { value: '365', key: 'beautyDays' as const },
+];
+
+const gardenStatLabels = {
+  en: {
+    hectares: 'Hectares',
+    elevation: 'Elevation',
+    treeSpecies: 'Tree Species',
+    beautyDays: 'Days of Beauty',
+  },
+  ru: {
+    hectares: 'Гектаров',
+    elevation: 'Высота',
+    treeSpecies: 'Видов деревьев',
+    beautyDays: 'Дней красоты',
+  },
+  uz: {
+    hectares: 'Gektar',
+    elevation: 'Balandlik',
+    treeSpecies: 'Daraxt turlari',
+    beautyDays: "Go'zallik kunlari",
+  },
+};
+
 export function Garden() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const statLabels = gardenStatLabels[language];
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
@@ -66,7 +95,6 @@ export function Garden() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Large Featured Card */}
           <div
             className={cn(
               'group relative aspect-[4/5] lg:row-span-2 overflow-hidden rounded-sm transition-all duration-1000',
@@ -97,7 +125,6 @@ export function Garden() {
             <div className="absolute inset-4 border border-[#d4af37]/0 group-hover:border-[#d4af37]/30 transition-all duration-500 rounded-sm" />
           </div>
 
-          {/* Smaller Cards */}
           {experiences.slice(1).map((experience, index) => (
             <div
               key={experience.key}
@@ -136,18 +163,13 @@ export function Garden() {
           'mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-700',
           isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         )}>
-          {[
-            { value: '500', label: 'Hectares' },
-            { value: '1,500m', label: 'Elevation' },
-            { value: '100+', label: 'Tree Species' },
-            { value: '365', label: 'Days of Beauty' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
+          {statValues.map((stat) => (
+            <div key={stat.key} className="text-center">
               <div className="text-4xl lg:text-5xl text-[#d4af37] font-light mb-2">
                 {stat.value}
               </div>
               <div className="text-[#f5f0e8]/50 text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)]">
-                {stat.label}
+                {statLabels[stat.key]}
               </div>
             </div>
           ))}
