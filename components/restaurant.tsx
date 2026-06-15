@@ -21,8 +21,30 @@ const features = [
   { icon: Sparkles, key: 'atmosphere' as const },
 ];
 
+const restaurantLabels = {
+  en: {
+    imageAlt: 'Miraki Gardens restaurant - garden-to-table dining',
+    seats: 'seat restaurant',
+    events: 'Events and banquets',
+    gardenToTable: 'Garden-to-table',
+  },
+  ru: {
+    imageAlt: 'Ресторан Miraki Gardens - кухня из сада к столу',
+    seats: 'местный ресторан',
+    events: 'Мероприятия и банкеты',
+    gardenToTable: 'Из сада к столу',
+  },
+  uz: {
+    imageAlt: "Miraki Gardens restorani - bog'dan dasturxonga",
+    seats: "o'rinli restoran",
+    events: 'Tadbir va banketlar',
+    gardenToTable: "Bog'dan dasturxonga",
+  },
+};
+
 export function Restaurant() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const labels = restaurantLabels[language];
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
@@ -34,8 +56,6 @@ export function Restaurant() {
 
       <div ref={ref} className="container mx-auto px-4 sm:px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-
-          {/* Image Side */}
           <div
             className={cn(
               'relative transition-all duration-1000',
@@ -45,14 +65,13 @@ export function Restaurant() {
             <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop"
-                alt="Miraki Gardens restoran – bog'dan dasturxonga"
+                alt={labels.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328]/65 via-[#1a3328]/10 to-transparent" />
 
-              {/* Mobile image label */}
               <div className="absolute left-5 right-5 bottom-5 sm:hidden">
                 <div className="rounded-2xl bg-[#1a3328]/90 backdrop-blur-md border border-white/10 p-5">
                   <div className="flex items-center gap-3">
@@ -60,7 +79,7 @@ export function Restaurant() {
                     <div>
                       <p className="text-[#d4af37] text-2xl font-semibold">120</p>
                       <p className="text-[#f5f0e8]/75 text-xs uppercase tracking-[0.2em]">
-                        o'rinli restoran
+                        {labels.seats}
                       </p>
                     </div>
                   </div>
@@ -68,7 +87,6 @@ export function Restaurant() {
               </div>
             </div>
 
-            {/* Floating Card - desktop/tablet */}
             <div className="hidden sm:block absolute -bottom-8 right-4 lg:-right-10 bg-[#1a3328] p-7 lg:p-8 rounded-3xl shadow-2xl max-w-xs border border-white/10">
               <div className="flex items-center gap-4">
                 <Users className="w-8 h-8 text-[#d4af37]" />
@@ -77,7 +95,7 @@ export function Restaurant() {
                     120
                   </div>
                   <div className="text-[#f5f0e8]/70 text-xs lg:text-sm font-[family-name:var(--font-montserrat)] tracking-wider uppercase mt-2">
-                    o'rinli restoran
+                    {labels.seats}
                   </div>
                 </div>
               </div>
@@ -86,7 +104,6 @@ export function Restaurant() {
             <div className="hidden sm:block absolute -top-5 -left-5 w-full h-full border border-[#d4af37]/30 rounded-3xl -z-10" />
           </div>
 
-          {/* Content Side */}
           <div
             className={cn(
               'transition-all duration-1000 delay-300',
@@ -114,14 +131,14 @@ export function Restaurant() {
               <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
                 <CalendarCheck className="w-5 h-5 text-[#d4af37] mb-3" />
                 <p className="text-[#1a3328] text-sm font-medium">
-                  Tadbir va banketlar
+                  {labels.events}
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
                 <Leaf className="w-5 h-5 text-[#d4af37] mb-3" />
                 <p className="text-[#1a3328] text-sm font-medium">
-                  Bog'dan dasturxonga
+                  {labels.gardenToTable}
                 </p>
               </div>
             </div>
