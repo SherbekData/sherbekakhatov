@@ -6,8 +6,39 @@ import { cn } from '@/lib/utils';
 import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
+const contactLabels = {
+  en: {
+    address: 'Address',
+    phone: 'Phone',
+    email: 'Email',
+    mapSubtitle: 'Shahrisabz, Uzbekistan',
+    route: 'Route',
+    shortAddress: 'Uloch MFY, Shahrisabz',
+    distance: 'About 15 minutes from Shahrisabz',
+  },
+  ru: {
+    address: 'Адрес',
+    phone: 'Телефон',
+    email: 'Email',
+    mapSubtitle: 'Шахрисабз, Узбекистан',
+    route: 'Маршрут',
+    shortAddress: 'Улоч МФЙ, Шахрисабз',
+    distance: 'Около 15 минут от Шахрисабза',
+  },
+  uz: {
+    address: 'Manzil',
+    phone: 'Telefon',
+    email: 'Email',
+    mapSubtitle: "Shahrisabz, O'zbekiston",
+    route: 'Marshrut',
+    shortAddress: 'Uloch MFY, Shahrisabz',
+    distance: 'Shahrisabzdan taxminan 15 daqiqa',
+  },
+};
+
 export function Contact() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const labels = contactLabels[language];
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
@@ -49,7 +80,7 @@ export function Contact() {
                   <MapPin className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">Address</h3>
+                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">{labels.address}</h3>
                   <p className="text-[#1a3328]/60 leading-relaxed">
                     {t.contact.address}
                   </p>
@@ -61,7 +92,7 @@ export function Contact() {
                   <Phone className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">Phone</h3>
+                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">{labels.phone}</h3>
                   <a
                     href={`tel:${t.contact.phone.replace(/\s/g, '')}`}
                     className="text-[#1a3328]/60 hover:text-[#1a3328] transition-colors duration-300"
@@ -76,7 +107,7 @@ export function Contact() {
                   <Mail className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">Email</h3>
+                  <h3 className="text-[#1a3328] font-medium text-lg mb-2">{labels.email}</h3>
                   <p className="text-[#1a3328]/60">
                     {t.contact.email}
                   </p>
@@ -121,7 +152,7 @@ export function Contact() {
                   </h3>
 
                   <p className="text-[#1a3328]/60 text-sm mb-5">
-                    Shahrisabz, Uzbekistan
+                    {labels.mapSubtitle}
                   </p>
                 </div>
               </a>
@@ -140,18 +171,18 @@ export function Contact() {
                 }}
               >
                 <MapPin className="w-4 h-4" />
-                Marshrut
+                {labels.route}
               </a>
             </div>
 
             <div className="flex flex-wrap gap-5 mt-4 text-sm text-[#1a3328]/50">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5" />
-                Uloch MFY, Shahrisabz
+                {labels.shortAddress}
               </span>
               <span className="flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5" />
-                Shahrisabzdan ~15 daqiqa
+                {labels.distance}
               </span>
             </div>
           </div>
