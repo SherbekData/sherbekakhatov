@@ -13,13 +13,32 @@ const languages: { code: Language; label: string }[] = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Instagram, href: 'https://www.instagram.com/miraki_gardens?igsh=MWJqb3kzMjl3MW1uYw==', label: 'Instagram' },
   { icon: Facebook, href: '#', label: 'Facebook' },
   { icon: Youtube, href: '#', label: 'YouTube' },
 ];
 
+const footerLabels = {
+  en: {
+    navigation: 'Navigation',
+    quickLinks: 'Quick Links',
+    backToTop: 'Back to top',
+  },
+  ru: {
+    navigation: 'Навигация',
+    quickLinks: 'Быстрые ссылки',
+    backToTop: 'Наверх',
+  },
+  uz: {
+    navigation: 'Navigatsiya',
+    quickLinks: 'Tezkor havolalar',
+    backToTop: 'Yuqoriga',
+  },
+};
+
 export function Footer() {
   const { language, setLanguage, t } = useLanguage();
+  const labels = footerLabels[language];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -37,23 +56,19 @@ export function Footer() {
 
   return (
     <footer className="bg-[#1a3328] pt-20 pb-8 relative overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#d4af37] rounded-full blur-3xl translate-y-1/2" />
       </div>
 
       <div className="container mx-auto px-6 relative">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
           <div className="lg:col-span-1">
             <h3 className="text-3xl text-[#f5f0e8] font-medium mb-4">
-              Miraki Garden
+              Miraki Gardens
             </h3>
             <p className="text-[#f5f0e8]/60 mb-6 leading-relaxed">
               {t.footer.tagline}
             </p>
-            {/* Social Links */}
             <div className="flex gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -61,6 +76,8 @@ export function Footer() {
                   <a
                     key={social.label}
                     href={social.href}
+                    target={social.href === '#' ? undefined : '_blank'}
+                    rel={social.href === '#' ? undefined : 'noopener noreferrer'}
                     aria-label={social.label}
                     className="w-10 h-10 rounded-full border border-[#f5f0e8]/20 flex items-center justify-center text-[#f5f0e8]/60 hover:border-[#d4af37] hover:text-[#d4af37] transition-colors duration-300"
                   >
@@ -71,10 +88,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
             <h4 className="text-[#d4af37] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)] font-medium mb-6">
-              Navigation
+              {labels.navigation}
             </h4>
             <nav className="space-y-3">
               {navLinks.slice(0, 4).map((link) => (
@@ -89,10 +105,9 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-[#d4af37] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)] font-medium mb-6">
-              Quick Links
+              {labels.quickLinks}
             </h4>
             <nav className="space-y-3">
               {navLinks.slice(4).map((link) => (
@@ -119,7 +134,6 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact & Language */}
           <div>
             <h4 className="text-[#d4af37] text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)] font-medium mb-6">
               {t.contact.title}
@@ -130,7 +144,6 @@ export function Footer() {
               <p>{t.contact.email}</p>
             </div>
 
-            {/* Language Switcher */}
             <div className="flex gap-3">
               {languages.map((lang) => (
                 <button
@@ -150,21 +163,18 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="h-px bg-[#f5f0e8]/10 mb-8" />
 
-        {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[#f5f0e8]/40 text-sm font-[family-name:var(--font-montserrat)]">
-            &copy; {new Date().getFullYear()} Miraki Garden. {t.footer.copyright}
+            &copy; {new Date().getFullYear()} Miraki Gardens. {t.footer.copyright}
           </p>
 
-          {/* Back to Top */}
           <button
             onClick={scrollToTop}
             className="flex items-center gap-2 text-[#f5f0e8]/40 hover:text-[#d4af37] transition-colors text-sm font-[family-name:var(--font-montserrat)]"
           >
-            Back to top
+            {labels.backToTop}
             <ChevronUp className="w-4 h-4" />
           </button>
         </div>
