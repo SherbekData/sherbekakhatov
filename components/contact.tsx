@@ -15,6 +15,8 @@ const contactLabels = {
     route: 'Route',
     shortAddress: 'Uloch MFY, Shahrisabz',
     distance: 'About 15 minutes from Shahrisabz',
+    locationNote: 'Mountain garden retreat',
+    coordinates: '39.026111, 67.079361',
   },
   ru: {
     address: 'Адрес',
@@ -24,6 +26,8 @@ const contactLabels = {
     route: 'Маршрут',
     shortAddress: 'Улоч МФЙ, Шахрисабз',
     distance: 'Около 15 минут от Шахрисабза',
+    locationNote: 'Горный садовый курорт',
+    coordinates: '39.026111, 67.079361',
   },
   uz: {
     address: 'Manzil',
@@ -33,6 +37,8 @@ const contactLabels = {
     route: 'Marshrut',
     shortAddress: 'Uloch MFY, Shahrisabz',
     distance: 'Shahrisabzdan taxminan 15 daqiqa',
+    locationNote: "Tog' bag'ridagi bog' dam olish maskani",
+    coordinates: '39.026111, 67.079361',
   },
 };
 
@@ -131,28 +137,43 @@ export function Contact() {
             isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
           )}>
             <div
-              className="relative rounded-sm overflow-hidden shadow-lg bg-[#d8d8cf] border border-[#d4af37]/40"
+              className="relative overflow-hidden rounded-lg border border-[#d4af37]/35 bg-[#d9d8cf] shadow-2xl shadow-[#1a3328]/10"
               style={{ aspectRatio: '4/3' }}
             >
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(circle at 28% 25%, rgba(212,175,55,0.22), transparent 30%), radial-gradient(circle at 72% 72%, rgba(26,51,40,0.16), transparent 35%), linear-gradient(135deg, #e5e1d5 0%, #d3d4ca 48%, #ece6d8 100%)',
+                }}
+              />
+              <div className="absolute inset-0 opacity-35" style={{ backgroundImage: 'linear-gradient(rgba(26,51,40,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(26,51,40,0.08) 1px, transparent 1px)', backgroundSize: '42px 42px' }} />
+              <div className="absolute inset-6 border border-[#d4af37]/35 rounded-md" />
+              <div className="absolute -left-16 top-20 h-24 w-[140%] rotate-[-12deg] rounded-full border border-[#1a3328]/10" />
+              <div className="absolute -right-20 bottom-24 h-32 w-[125%] rotate-[14deg] rounded-full border border-[#1a3328]/10" />
+              <div className="absolute left-10 top-10 rounded-full border border-[#d4af37]/35 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[#1a3328]/55 font-[family-name:var(--font-montserrat)]">
+                {labels.locationNote}
+              </div>
+
               <a
                 href="https://yandex.uz/maps/?ll=67.079361%2C39.026111&z=16&pt=67.079361,39.026111,pm2rdm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center group"
               >
-                <div className="absolute inset-4 border border-[#d4af37]/30" />
-
-                <div className="text-center z-10 px-6">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#1a3328]/10 flex items-center justify-center group-hover:bg-[#1a3328] transition-colors duration-300">
-                    <MapPin className="w-8 h-8 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
+                <div className="relative z-10 w-[min(78%,360px)] rounded-lg border border-white/45 bg-[#f5f0e8]/78 p-6 text-center shadow-xl shadow-[#1a3328]/10 backdrop-blur-md transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a3328] shadow-lg shadow-[#1a3328]/20">
+                    <MapPin className="h-8 w-8 text-[#d4af37]" />
                   </div>
-
-                  <h3 className="text-[#1a3328] text-xl font-medium mb-2">
+                  <h3 className="text-2xl text-[#1a3328] font-medium mb-1">
                     Miraki Gardens
                   </h3>
-
-                  <p className="text-[#1a3328]/60 text-sm mb-5">
+                  <p className="text-[#1a3328]/62 text-sm mb-4">
                     {labels.mapSubtitle}
+                  </p>
+                  <div className="mx-auto h-px w-20 bg-[#d4af37]/60 mb-4" />
+                  <p className="font-[family-name:var(--font-montserrat)] text-[11px] tracking-[0.18em] uppercase text-[#1a3328]/55">
+                    {labels.coordinates}
                   </p>
                 </div>
               </a>
@@ -161,27 +182,21 @@ export function Contact() {
                 href="https://yandex.uz/maps/?rtext=~39.026111%2C67.079361&rtt=auto&z=15"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-5 py-3 text-sm font-medium tracking-wide transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
-                style={{
-                  background: '#1a3328',
-                  color: '#f5f0e8',
-                  borderRadius: '2px',
-                  fontFamily: 'var(--font-montserrat)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-                }}
+                className="absolute bottom-5 right-5 z-20 inline-flex items-center gap-2 rounded-full bg-[#1a3328] px-5 py-3 text-sm font-semibold tracking-wide text-[#f5f0e8] shadow-xl shadow-[#1a3328]/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#243d32]"
+                style={{ fontFamily: 'var(--font-montserrat)' }}
               >
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-4 h-4 text-[#d4af37]" />
                 {labels.route}
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-5 mt-4 text-sm text-[#1a3328]/50">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5" />
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <span className="flex items-center gap-2 rounded-full border border-[#1a3328]/10 bg-white/45 px-4 py-3 text-sm text-[#1a3328]/62">
+                <MapPin className="w-4 h-4 text-[#d4af37]" />
                 {labels.shortAddress}
               </span>
-              <span className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5" />
+              <span className="flex items-center gap-2 rounded-full border border-[#1a3328]/10 bg-white/45 px-4 py-3 text-sm text-[#1a3328]/62">
+                <Phone className="w-4 h-4 text-[#d4af37]" />
                 {labels.distance}
               </span>
             </div>
