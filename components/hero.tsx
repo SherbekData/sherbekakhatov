@@ -1,43 +1,35 @@
 'use client';
 
 import { useLanguage } from '@/lib/language-context';
-import { ChevronDown, MapPin, Mountain, Phone, TreeDeciduous } from 'lucide-react';
+import { CalendarDays, ChevronDown, MapPin, Play, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const highlights = [
-  { value: '500', key: 'hectares' as const, icon: TreeDeciduous },
-  { value: '15', key: 'distance' as const, icon: MapPin },
-  { value: '3', key: 'rooms' as const, icon: Mountain },
-];
+import BeSearchForm from './beForms/beSearchForm';
 
 const heroLabels = {
   en: {
     badge: 'Shahrisabz mountain retreat',
-    imageAlt: "Miraki Gardens - Shahrisabz mountain view",
-    highlights: {
-      hectares: 'hectares',
-      distance: 'min from Shahrisabz',
-      rooms: 'room types',
-    },
+    imageAlt: 'Miraki Gardens drone view',
+    video: 'Watch Video',
+    ratingText: '500+ guest reviews',
+    locationTitle: 'Shahrisabz',
+    locationText: 'Qashqadaryo region',
   },
   ru: {
     badge: 'Горный курорт в Шахрисабзе',
-    imageAlt: 'Miraki Gardens - вид на горы Шахрисабза',
-    highlights: {
-      hectares: 'гектаров',
-      distance: 'мин от Шахрисабза',
-      rooms: 'типа номеров',
-    },
+    imageAlt: 'Miraki Gardens с высоты',
+    video: 'Смотреть видео',
+    ratingText: '500+ отзывов гостей',
+    locationTitle: 'Шахрисабз',
+    locationText: 'Кашкадарьинская область',
   },
   uz: {
-    badge: "Shahrisabz tog' dam olish maskani",
-    imageAlt: "Miraki Gardens - Shahrisabz tog' manzarasi",
-    highlights: {
-      hectares: 'gektar',
-      distance: 'daq. Shahrisabzdan',
-      rooms: 'xona turi',
-    },
+    badge: "Shahrisabz mountain retreat",
+    imageAlt: "Miraki Gardens dron manzarasi",
+    video: "Videoni ko'rish",
+    ratingText: '500+ mehmon fikri',
+    locationTitle: 'Shahrisabz',
+    locationText: 'Qashqadaryo viloyati',
   },
 };
 
@@ -48,89 +40,94 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[92svh] overflow-hidden pt-20 bg-[#1a3328]"
+      className="relative min-h-[100svh] overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
     >
       <div className="absolute inset-0">
         <Image
           src="/images/miraki-hero.webp"
-          alt="Miraki Gardens"
+          alt={labels.imageAlt}
           fill
           priority
           quality={85}
           sizes="100vw"
-          className="object-cover object-center scale-[1.03]"
+          className="object-cover object-center scale-[1.01]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#10261d]/95 via-[#1a3328]/70 to-[#1a3328]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a3328] via-transparent to-[#10261d]/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062318]/98 via-[#10261d]/76 to-[#10261d]/8" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/95 via-[#10261d]/18 to-[#10261d]/12" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,transparent_0,transparent_34%,rgba(6,35,24,0.36)_74%)]" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-[calc(92svh-5rem)] flex items-center">
-        <div className="max-w-3xl py-16 sm:py-20 text-left">
-          <div className="inline-flex items-center gap-3 mb-6 rounded-full border border-[#d4af37]/30 bg-[#10261d]/45 px-4 py-2 backdrop-blur-md animate-fade-up">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1500px] flex-col justify-center px-5 pb-40 pt-10 sm:px-8 lg:pb-44">
+        <div className="max-w-[620px] text-left">
+          <div className="inline-flex items-center gap-3 mb-7 rounded-full border border-[#d4af37]/35 bg-[#10261d]/42 px-4 py-2 backdrop-blur-md animate-fade-up">
             <MapPin className="h-4 w-4 text-[#d4af37]" />
-            <span className="font-[family-name:var(--font-montserrat)] text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[#f5f0e8]/80">
+            <span className="font-[family-name:var(--font-montserrat)] text-[11px] sm:text-xs uppercase tracking-[0.14em] text-[#d4af37]">
               {labels.badge}
             </span>
           </div>
 
-          <h1 className="max-w-4xl text-[48px] leading-[0.98] sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[#f5f0e8] mb-5 tracking-normal animate-fade-up animation-delay-100">
-            {t.hero.title}
+          <h1 className="max-w-3xl text-[64px] leading-[0.9] sm:text-7xl md:text-8xl lg:text-[112px] font-medium text-[#f5f0e8] mb-6 tracking-normal animate-fade-up animation-delay-100">
+            <span className="block">Miraki</span>
+            <span className="block text-[#d4af37]">Gardens</span>
           </h1>
 
-          <p className="max-w-2xl text-base sm:text-xl md:text-2xl text-[#d4af37] tracking-[0.12em] sm:tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-light mb-6 animate-fade-up animation-delay-200">
+          <p className="max-w-xl text-xl sm:text-2xl md:text-[28px] text-[#f5f0e8] tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium leading-snug mb-6 animate-fade-up animation-delay-200">
             {t.hero.subtitle}
           </p>
 
-          <p className="max-w-2xl text-[#f5f0e8]/80 text-base sm:text-lg md:text-xl leading-relaxed mb-8 animate-fade-up animation-delay-300">
+          <p className="max-w-xl text-[#f5f0e8]/86 text-base sm:text-lg md:text-xl leading-relaxed mb-9 animate-fade-up animation-delay-300">
             {t.hero.description}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 animate-fade-up animation-delay-400">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 animate-fade-up animation-delay-400">
             <Link
               href="?be-booking-open=true"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '?be-booking-open=true';
               }}
-              className="hidden sm:inline-flex justify-center rounded-lg bg-[#d4af37] px-8 py-4 text-[#1a3328] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-all duration-300 hover:shadow-lg hover:shadow-[#d4af37]/20"
+              className="hidden sm:inline-flex justify-center items-center gap-3 rounded-lg bg-[#d4af37] px-8 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-all duration-300 hover:shadow-lg hover:shadow-[#d4af37]/20"
             >
+              <CalendarDays className="h-5 w-5" />
               {t.nav.bookNow}
             </Link>
 
             <a
-              href={`tel:${t.contact.phone.replace(/\s/g, '')}`}
-              className="inline-flex justify-center items-center gap-2 rounded-lg border border-[#f5f0e8]/25 px-8 py-4 text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#f5f0e8]/10 transition-all duration-300"
+              href="#gallery"
+              className="inline-flex justify-center items-center gap-3 rounded-lg border border-[#f5f0e8]/35 bg-[#10261d]/22 px-8 py-4 text-[#f5f0e8] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold backdrop-blur-sm hover:bg-[#f5f0e8]/10 transition-all duration-300"
             >
-              <Phone className="w-4 h-4" />
-              {t.contact.phone}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#f5f0e8]/55">
+                <Play className="h-3.5 w-3.5 fill-current" />
+              </span>
+              {labels.video}
             </a>
           </div>
 
-          <div className="mt-10 grid max-w-2xl grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-up animation-delay-500">
-            {highlights.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.key}
-                  className="rounded-lg border border-[#f5f0e8]/10 bg-[#10261d]/40 p-4 backdrop-blur-md"
-                >
-                  <Icon className="mb-3 h-5 w-5 text-[#d4af37]" />
-                  <div className="text-2xl font-medium text-[#f5f0e8]">{item.value}</div>
-                  <div className="mt-1 font-[family-name:var(--font-montserrat)] text-[11px] uppercase tracking-[0.16em] text-[#f5f0e8]/55">
-                    {labels.highlights[item.key]}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center animate-fade-up animation-delay-500">
+            <div className="flex items-center gap-4">
+              <Star className="h-8 w-8 fill-[#d4af37] text-[#d4af37]" />
+              <div>
+                <div className="font-[family-name:var(--font-montserrat)] text-lg font-semibold text-[#f5f0e8]">4.9</div>
+                <div className="text-sm text-[#f5f0e8]/82">{labels.ratingText}</div>
+              </div>
+            </div>
+            <div className="hidden h-11 w-px bg-[#f5f0e8]/22 sm:block" />
+            <div className="flex items-center gap-4">
+              <MapPin className="h-8 w-8 fill-[#d4af37] text-[#d4af37]" />
+              <div>
+                <div className="font-[family-name:var(--font-montserrat)] text-lg font-semibold text-[#f5f0e8]">{labels.locationTitle}</div>
+                <div className="text-sm text-[#f5f0e8]/82">{labels.locationText}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 animate-fade-up animation-delay-600">
-        <span className="text-[#f5f0e8]/55 text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-montserrat)]">
-          {t.hero.scroll}
-        </span>
-        <div className="w-px h-10 bg-gradient-to-b from-[#f5f0e8]/50 to-transparent relative">
+      <BeSearchForm />
+
+      <div className="hidden md:flex absolute bottom-8 left-1/2 z-10 -translate-x-1/2 flex-col items-center gap-3 animate-fade-up animation-delay-600">
+        <span className="sr-only">{t.hero.scroll}</span>
+        <div className="w-px h-9 bg-gradient-to-b from-[#f5f0e8]/45 to-transparent relative">
           <ChevronDown className="w-4 h-4 text-[#d4af37] absolute -bottom-2 left-1/2 -translate-x-1/2 animate-bounce" />
         </div>
       </div>
