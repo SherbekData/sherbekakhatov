@@ -1,5 +1,5 @@
 body {
-    padding-bottom: 154px;
+    padding-bottom: 0;
 }
 
 #block-search,
@@ -8,26 +8,26 @@ body {
 }
 
 .sf-wrapper {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    bottom: 18px;
-    z-index: 45;
-    padding: 0 15px;
+    bottom: 34px;
+    z-index: 20;
+    padding: 0 24px;
     background: transparent;
     pointer-events: none;
 }
 
 #block-search {
     position: relative;
-    width: min(calc(100% - 30px), 1180px);
-    min-height: 112px;
+    width: min(calc(100% - 48px), 1180px);
+    min-height: 118px;
     margin: 0 auto;
-    border: 1px solid rgba(212, 175, 55, 0.28);
-    border-radius: 8px;
-    background: linear-gradient(180deg, #10261d 0%, #254234 100%);
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
-    backdrop-filter: blur(18px);
+    border: 1px solid rgba(245, 240, 232, 0.2);
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(16, 38, 29, 0.86) 0%, rgba(18, 54, 39, 0.88) 100%);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(22px);
     overflow: visible;
     pointer-events: auto;
 }
@@ -41,7 +41,7 @@ body {
 .be-container {
     max-width: 1260px;
     margin: 0 auto;
-    padding: 14px 16px;
+    padding: 16px 22px;
     overflow: visible;
 }
 
@@ -56,10 +56,6 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
-    body {
-        padding-bottom: 174px;
-    }
-
     header nav {
         column-gap: 12px;
     }
@@ -70,11 +66,11 @@ body {
 
     .booking-link {
         font-size: 12px;
-        padding: 10px 14px;
+        padding: 12px 16px;
     }
 
     #block-search {
-        width: min(calc(100% - 120px), 960px);
+        width: min(calc(100% - 72px), 980px);
         min-height: 132px;
     }
 
