@@ -2,14 +2,12 @@
 
 import { useLanguage } from '@/lib/language-context';
 import { CalendarDays, ChevronDown, MapPin, Play, Star } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import BeSearchForm from './beForms/beSearchForm';
 
 const heroLabels = {
   en: {
     badge: 'Shahrisabz mountain retreat',
-    imageAlt: 'Miraki Gardens drone view',
     video: 'Watch Video',
     ratingText: '500+ guest reviews',
     locationTitle: 'Shahrisabz',
@@ -17,7 +15,6 @@ const heroLabels = {
   },
   ru: {
     badge: 'Горный курорт в Шахрисабзе',
-    imageAlt: 'Miraki Gardens с высоты',
     video: 'Смотреть видео',
     ratingText: '500+ отзывов гостей',
     locationTitle: 'Шахрисабз',
@@ -25,7 +22,6 @@ const heroLabels = {
   },
   uz: {
     badge: "Shahrisabz mountain retreat",
-    imageAlt: "Miraki Gardens dron manzarasi",
     video: "Videoni ko'rish",
     ratingText: '500+ mehmon fikri',
     locationTitle: 'Shahrisabz',
@@ -43,14 +39,13 @@ export function Hero() {
       className="relative min-h-[100svh] overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
     >
       <div className="absolute inset-0">
-        <Image
-          src="/images/miraki-hero.webp"
-          alt={labels.imageAlt}
-          fill
-          priority
-          quality={85}
-          sizes="100vw"
-          className="object-cover object-center scale-[1.01]"
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 scale-[1.01] bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('/images/miraki-hero.webp'), url('/images/miraki-hero.jpg'), url('/miraki-hero.jpg')",
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#062318]/98 via-[#10261d]/76 to-[#10261d]/8" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/95 via-[#10261d]/18 to-[#10261d]/12" />
