@@ -1,9 +1,8 @@
 'use client';
 
-import { heroBlurDataURL } from '@/lib/hero-blur-data';
 import { useLanguage } from '@/lib/language-context';
 import { ChevronDown, MapPin, Mountain, Phone, TreeDeciduous } from 'lucide-react';
-import Image, { type ImageLoaderProps } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const highlights = [
@@ -11,13 +10,6 @@ const highlights = [
   { value: '15', key: 'distance' as const, icon: MapPin },
   { value: '3', key: 'rooms' as const, icon: Mountain },
 ];
-
-const heroImageLoader = ({ width }: ImageLoaderProps) => {
-  if (width <= 640) return '/images/hero/hero-640.avif';
-  if (width <= 1024) return '/images/hero/hero-1024.avif';
-  if (width <= 1440) return '/images/hero/hero-1440.avif';
-  return '/images/hero/hero-1920.avif';
-};
 
 const heroLabels = {
   en: {
@@ -60,15 +52,12 @@ export function Hero() {
     >
       <div className="absolute inset-0">
         <Image
-          loader={heroImageLoader}
-          src="/images/hero/hero-1920.avif"
-          alt={labels.imageAlt}
+          src="/images/miraki-hero.webp"
+          alt="Miraki Gardens"
           fill
-          priority={true}
+          priority
           quality={85}
           sizes="100vw"
-          placeholder="blur"
-          blurDataURL={heroBlurDataURL}
           className="object-cover object-center scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#10261d]/95 via-[#1a3328]/70 to-[#1a3328]/25" />
