@@ -5,6 +5,7 @@ import sharp from 'sharp';
 const rootDir = process.cwd();
 const inputPath = path.join(rootDir, 'public', 'miraki-hero.jpg');
 const outputDir = path.join(rootDir, 'public', 'images', 'hero');
+const blurModulePath = path.join(rootDir, 'lib', 'hero-blur-data.ts');
 const widths = [640, 1024, 1440, 1920];
 const maxDesktopBytes = 500 * 1024;
 
@@ -37,6 +38,7 @@ async function main() {
   }
 
   fs.mkdirSync(outputDir, { recursive: true });
+  fs.mkdirSync(path.dirname(blurModulePath), { recursive: true });
 
   await Promise.all(widths.map(encodeVariant));
 
@@ -47,9 +49,15 @@ async function main() {
     .toBuffer();
 
   const blurDataURL = `data:image/avif;base64,${blurBuffer.toString('base64')}`;
+
   fs.writeFileSync(
     path.join(outputDir, 'hero-blur.json'),
     JSON.stringify({ blurDataURL }, null, 2)
+  );
+
+  fs.writeFileSync(
+    blurModulePath,
+    `export const heroBlurDataURL = ${JSON.stringify(blurDataURL)};\n`
   );
 }
 
