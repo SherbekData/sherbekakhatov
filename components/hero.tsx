@@ -39,14 +39,15 @@ export function Hero() {
       className="relative min-h-[100svh] overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
     >
       <div className="absolute inset-0">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 scale-[1.01] bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('/images/miraki-hero.webp'), url('/images/miraki-hero.jpg'), url('/miraki-hero.jpg')",
-          }}
-        />
+        <picture aria-hidden="true">
+          <source srcSet="/images/miraki-hero.webp" type="image/webp" />
+          <img
+            src="/images/miraki-hero.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full scale-[1.01] object-cover object-center"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-[#062318]/98 via-[#10261d]/76 to-[#10261d]/8" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/95 via-[#10261d]/18 to-[#10261d]/12" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,transparent_0,transparent_34%,rgba(6,35,24,0.36)_74%)]" />
