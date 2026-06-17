@@ -35,15 +35,15 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
+      className="relative min-h-screen overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
     >
       <div className="absolute inset-0">
         <img
           aria-hidden="true"
           src="/miraki-hero.jpg"
           alt=""
-          className="absolute inset-0 h-full w-full scale-[1.01] object-cover"
-          style={{ objectPosition: '85% 25%' }}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: '78% 55%' }}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,35,22,0.92)_0%,rgba(3,35,22,0.72)_35%,rgba(3,35,22,0.28)_60%,rgba(3,35,22,0.05)_100%)]" />
