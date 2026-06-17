@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import type { Language } from '@/lib/translations';
@@ -39,6 +40,7 @@ const uiLabels = {
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage();
+  const pathname = usePathname();
   const labels = uiLabels[language];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,13 +62,18 @@ export function Header() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: '#home', label: t.nav.home },
-    { href: '#rooms', label: t.nav.rooms },
-    { href: '#restaurant', label: t.nav.restaurant },
-    { href: '#garden', label: t.nav.garden },
-    { href: '#gallery', label: t.nav.gallery },
-    { href: '#contact', label: t.nav.contact },
+    { href: '/', label: t.nav.home },
+    { href: '/rooms', label: t.nav.rooms },
+    { href: '/restaurant', label: t.nav.restaurant },
+    { href: '/garden', label: t.nav.garden },
+    { href: '/gallery', label: t.nav.gallery },
+    { href: '/contact', label: t.nav.contact },
   ];
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -86,7 +93,7 @@ export function Header() {
             isScrolled || isMobileMenuOpen ? 'h-16' : 'h-24'
           )}
         >
-          <Link href="#home" onClick={closeMobileMenu} className="relative z-50 flex items-center gap-4">
+          <Link href="/" onClick={closeMobileMenu} className="relative z-50 flex items-center gap-4">
             <span className="relative hidden h-12 w-12 rotate-45 border-2 border-[#d4af37] sm:block">
               <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#d4af37]" />
               <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-[#d4af37]" />
@@ -102,13 +109,13 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
                   'relative py-3 text-sm tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/88 hover:text-[#d4af37] transition-colors duration-300',
-                  index === 0 && 'text-[#d4af37] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-[#d4af37]'
+                  isActive(link.href) && 'text-[#d4af37] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-[#d4af37]'
                 )}
               >
                 {link.label}
@@ -203,7 +210,10 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={closeMobileMenu}
-                className="py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37] transition-colors"
+                className={cn(
+                  'py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37] transition-colors',
+                  isActive(link.href) && 'text-[#d4af37]'
+                )}
               >
                 {link.label}
               </Link>
