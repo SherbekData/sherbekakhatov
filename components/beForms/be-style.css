@@ -1,5 +1,5 @@
 body {
-    padding-bottom: 0;
+    padding-bottom: 148px;
 }
 
 #block-search,
@@ -8,11 +8,11 @@ body {
 }
 
 .sf-wrapper {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
-    bottom: 34px;
-    z-index: 20;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    z-index: 90;
     padding: 0 24px;
     background: transparent;
     pointer-events: none;
@@ -56,6 +56,10 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
+    body {
+        padding-bottom: 162px;
+    }
+
     header nav {
         column-gap: 12px;
     }
