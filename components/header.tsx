@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
@@ -45,6 +45,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const phoneHref = `tel:${t.contact.phone.replace(/\s/g, '')}`;
 
   useEffect(() => {
@@ -61,18 +62,49 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
-    { href: '/', label: t.nav.home },
-    { href: '/rooms', label: t.nav.rooms },
-    { href: '/restaurant', label: t.nav.restaurant },
-    { href: '/garden', label: t.nav.garden },
-    { href: '/gallery', label: t.nav.gallery },
-    { href: '/contact', label: t.nav.contact },
-  ];
+  const navLinks = useMemo(() => [
+    { href: '/#home', section: 'home', label: t.nav.home },
+    { href: '/#rooms', section: 'rooms', label: t.nav.rooms },
+    { href: '/#restaurant', section: 'restaurant', label: t.nav.restaurant },
+    { href: '/#garden', section: 'garden', label: t.nav.garden },
+    { href: '/#gallery', section: 'gallery', label: t.nav.gallery },
+    { href: '/#contact', section: 'contact', label: t.nav.contact },
+  ], [t.nav.home, t.nav.rooms, t.nav.restaurant, t.nav.garden, t.nav.gallery, t.nav.contact]);
 
-  const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.section))
+      .filter(Boolean) as HTMLElement[];
+
+    const updateActiveSection = () => {
+      const pathSection = pathname.split('/').filter(Boolean)[0];
+      if (pathSection && navLinks.some((link) => link.section === pathSection)) {
+        setActiveSection(pathSection);
+        return;
+      }
+
+      const current = sections
+        .map((section) => ({
+          id: section.id,
+          distance: Math.abs(section.getBoundingClientRect().top - 120),
+        }))
+        .sort((a, b) => a.distance - b.distance)[0];
+
+      setActiveSection(current?.id ?? 'home');
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('hashchange', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('hashchange', updateActiveSection);
+    };
+  }, [pathname, navLinks]);
+
+  const isActive = (section: string) => {
+    return activeSection === section;
   };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -93,7 +125,7 @@ export function Header() {
             isScrolled || isMobileMenuOpen ? 'h-16' : 'h-24'
           )}
         >
-          <Link href="/" onClick={closeMobileMenu} className="relative z-50 flex items-center gap-4">
+          <Link href="/#home" onClick={closeMobileMenu} className="relative z-50 flex items-center gap-4">
             <span className="relative hidden h-12 w-12 rotate-45 border-2 border-[#d4af37] sm:block">
               <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#d4af37]" />
               <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-[#d4af37]" />
@@ -115,7 +147,7 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'relative py-3 text-sm tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/88 hover:text-[#d4af37] transition-colors duration-300',
-                  isActive(link.href) && 'text-[#d4af37] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-[#d4af37]'
+                  isActive(link.section) && 'text-[#d4af37] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-[#d4af37]'
                 )}
               >
                 {link.label}
@@ -212,7 +244,7 @@ export function Header() {
                 onClick={closeMobileMenu}
                 className={cn(
                   'py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37] transition-colors',
-                  isActive(link.href) && 'text-[#d4af37]'
+                  isActive(link.section) && 'text-[#d4af37]'
                 )}
               >
                 {link.label}
