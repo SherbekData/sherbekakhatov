@@ -43,7 +43,8 @@ export function Hero() {
           aria-hidden="true"
           src="/miraki-hero.jpg"
           alt=""
-          className="absolute inset-0 h-full w-full scale-[1.01] object-cover object-center"
+          className="absolute inset-0 h-full w-full scale-[1.01] object-cover"
+          style={{ objectPosition: 'center 78%' }}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#062318]/98 via-[#10261d]/76 to-[#10261d]/8" />
