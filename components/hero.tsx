@@ -43,7 +43,7 @@ export function Hero() {
           src="/miraki-hero.jpg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: '78% 55%' }}
+          style={{ objectPosition: '62% 58%' }}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,35,22,0.92)_0%,rgba(3,35,22,0.72)_35%,rgba(3,35,22,0.28)_60%,rgba(3,35,22,0.05)_100%)]" />
