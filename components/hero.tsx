@@ -43,12 +43,12 @@ export function Hero() {
           src="/miraki-hero.jpg"
           alt=""
           className="absolute inset-0 h-full w-full scale-[1.01] object-cover"
-          style={{ objectPosition: 'center bottom' }}
+          style={{ objectPosition: '75% center' }}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062318]/98 via-[#10261d]/58 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/90 via-[#10261d]/10 to-[#10261d]/4" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_46%,transparent_0,transparent_42%,rgba(6,35,24,0.24)_82%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,35,22,0.92)_0%,rgba(3,35,22,0.72)_35%,rgba(3,35,22,0.28)_60%,rgba(3,35,22,0.05)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/82 via-[#10261d]/8 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_46%,transparent_0,transparent_46%,rgba(6,35,24,0.12)_86%)]" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1500px] flex-col justify-center px-5 pb-40 pt-10 sm:px-8 lg:pb-44">
