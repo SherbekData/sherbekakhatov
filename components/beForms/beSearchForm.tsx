@@ -7,7 +7,7 @@ import "./be-style.css";
 
 function BeSearchForm() {
   const { language } = useLanguage();
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const searchForm = (w: any) => {
     // @ts-ignore
@@ -30,43 +30,73 @@ function BeSearchForm() {
     ]);
   };
 
+  const openBooking = () => setIsOpen(true);
+  const closeBooking = () => {
+    setIsOpen(false);
+
+    if (window.location.search.includes('be-booking-open=true')) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+  };
+
   useEffect(() => {
     searchForm(window);
   }, [language]);
 
   useEffect(() => {
-    const openBooking = () => setIsMobileOpen(true);
+    if (window.location.search.includes('be-booking-open=true')) {
+      openBooking();
+    }
 
-    window.addEventListener('miraki:open-booking', openBooking);
+    const handleOpenBooking = () => openBooking();
+    const handleBookingClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const bookingLink = target?.closest('a[href*="be-booking-open=true"], .booking-link');
 
-    return () => window.removeEventListener('miraki:open-booking', openBooking);
+      if (!bookingLink) return;
+
+      event.preventDefault();
+      openBooking();
+    };
+
+    window.addEventListener('miraki:open-booking', handleOpenBooking);
+    document.addEventListener('click', handleBookingClick);
+
+    return () => {
+      window.removeEventListener('miraki:open-booking', handleOpenBooking);
+      document.removeEventListener('click', handleBookingClick);
+    };
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle('be-mobile-open', isMobileOpen);
+    document.body.classList.toggle('be-mobile-open', isOpen);
+    document.body.classList.toggle('be-booking-open', isOpen);
 
-    return () => document.body.classList.remove('be-mobile-open');
-  }, [isMobileOpen]);
+    return () => {
+      document.body.classList.remove('be-mobile-open');
+      document.body.classList.remove('be-booking-open');
+    };
+  }, [isOpen]);
 
   return (
     <>
       <button
         type="button"
-        className={`be-mobile-trigger${isMobileOpen ? ' is-hidden' : ''}`}
-        onClick={() => setIsMobileOpen(true)}
+        className={`be-mobile-trigger${isOpen ? ' is-hidden' : ''}`}
+        onClick={openBooking}
         aria-controls="block-search"
-        aria-expanded={isMobileOpen}
+        aria-expanded={isOpen}
         aria-label="Xonani bron qilish"
       >
         <KeyRound aria-hidden="true" />
       </button>
 
-      <div id="booking" className={`sf-wrapper${isMobileOpen ? ' is-mobile-open' : ''}`}>
+      <div id="booking" className={`sf-wrapper${isOpen ? ' is-open is-mobile-open' : ''}`}>
         <div id="block-search">
           <button
             type="button"
             className="be-mobile-close"
-            onClick={() => setIsMobileOpen(false)}
+            onClick={closeBooking}
             aria-label="Bron formasini yopish"
           >
             <X aria-hidden="true" />
