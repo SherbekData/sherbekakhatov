@@ -1,10 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
+import { MapPin, Phone, Mail, ExternalLink, MessageCircle, Send, Instagram } from 'lucide-react';
+
+const WHATSAPP_NUMBER = '998873378888';
+const WHATSAPP_MESSAGE = "Salom, Miraki Gardens haqida ma'lumot olmoqchiman";
+const TELEGRAM_URL = 'https://t.me/MirakiGardens';
+const INSTAGRAM_URL = 'https://www.instagram.com/miraki_gardens?igsh=MWJqb3kzMjl3MW1uYw==';
 
 const contactLabels = {
   en: {
@@ -17,6 +22,11 @@ const contactLabels = {
     distance: 'About 15 minutes from Shahrisabz',
     locationNote: 'Mountain garden retreat',
     coordinates: '39.026111, 67.079361',
+    channels: {
+      telegram: 'Telegram',
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
+    },
   },
   ru: {
     address: 'Адрес',
@@ -28,6 +38,11 @@ const contactLabels = {
     distance: 'Около 15 минут от Шахрисабза',
     locationNote: 'Горный садовый курорт',
     coordinates: '39.026111, 67.079361',
+    channels: {
+      telegram: 'Telegram',
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
+    },
   },
   uz: {
     address: 'Manzil',
@@ -39,6 +54,11 @@ const contactLabels = {
     distance: 'Shahrisabzdan taxminan 15 daqiqa',
     locationNote: "Tog' bag'ridagi bog' dam olish maskani",
     coordinates: '39.026111, 67.079361',
+    channels: {
+      telegram: 'Telegram',
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram',
+    },
   },
 };
 
@@ -46,6 +66,29 @@ export function Contact() {
   const { language, t } = useLanguage();
   const labels = contactLabels[language];
   const { ref, isInView } = useInView({ threshold: 0.1 });
+  const [isChannelPickerOpen, setIsChannelPickerOpen] = useState(false);
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+  const contactChannels = [
+    {
+      href: TELEGRAM_URL,
+      label: labels.channels.telegram,
+      icon: Send,
+      className: 'hover:border-sky-500/40 hover:bg-sky-500/10',
+    },
+    {
+      href: whatsappUrl,
+      label: labels.channels.whatsapp,
+      icon: MessageCircle,
+      className: 'hover:border-emerald-500/40 hover:bg-emerald-500/10',
+    },
+    {
+      href: INSTAGRAM_URL,
+      label: labels.channels.instagram,
+      icon: Instagram,
+      className: 'hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10',
+    },
+  ];
 
   return (
     <section id="contact" className="py-24 md:py-32 bg-[#f5f0e8] relative overflow-hidden">
@@ -121,14 +164,40 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="mt-12">
-              <Link
-                href="#booking"
+            <div className="relative mt-12 inline-block">
+              <button
+                type="button"
+                onClick={() => setIsChannelPickerOpen((isOpen) => !isOpen)}
+                aria-expanded={isChannelPickerOpen}
                 className="inline-flex items-center gap-3 px-8 py-4 bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.2em] uppercase font-[family-name:var(--font-montserrat)] font-medium hover:bg-[#2a4338] transition-all duration-300"
               >
                 {t.contact.cta}
                 <ExternalLink className="w-4 h-4" />
-              </Link>
+              </button>
+
+              {isChannelPickerOpen && (
+                <div className="absolute left-0 top-full z-20 mt-3 w-64 overflow-hidden rounded-lg border border-[#1a3328]/10 bg-[#f5f0e8] shadow-2xl shadow-[#1a3328]/15">
+                  {contactChannels.map((channel) => {
+                    const Icon = channel.icon;
+
+                    return (
+                      <a
+                        key={channel.href}
+                        href={channel.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          'flex items-center gap-3 border-b border-[#1a3328]/10 px-5 py-4 text-sm font-[family-name:var(--font-montserrat)] font-semibold text-[#1a3328] transition-colors last:border-b-0',
+                          channel.className
+                        )}
+                      >
+                        <Icon className="h-4 w-4 text-[#d4af37]" />
+                        {channel.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 
