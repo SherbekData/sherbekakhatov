@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 import { MapPin, Phone, Mail, ExternalLink, MessageCircle, Send, Instagram } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '998873378888';
-const WHATSAPP_MESSAGE = "Salom, Miraki Gardens haqida ma'lumot olmoqchiman";
-const TELEGRAM_URL = 'https://t.me/MirakiGardens';
+const CONTACT_MESSAGE = "Salom, Miraki Gardens haqida ma'lumot olmoqchiman";
+const TELEGRAM_URL = `https://t.me/share/url?url=${encodeURIComponent('https://miraki-garden.uz')}&text=${encodeURIComponent(CONTACT_MESSAGE)}`;
 const INSTAGRAM_URL = 'https://www.instagram.com/miraki_gardens?igsh=MWJqb3kzMjl3MW1uYw==';
 
 const contactLabels = {
@@ -67,7 +67,7 @@ export function Contact() {
   const labels = contactLabels[language];
   const { ref, isInView } = useInView({ threshold: 0.1 });
   const [isChannelPickerOpen, setIsChannelPickerOpen] = useState(false);
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`;
 
   const contactChannels = [
     {
