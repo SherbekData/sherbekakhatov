@@ -21,7 +21,7 @@ const contactLabels = {
   ru: {
     address: 'Адрес',
     phone: 'Телефон',
-    email: 'Email',
+    email: 'Эл. почта',
     mapSubtitle: 'Шахрисабз, Узбекистан',
     route: 'Маршрут',
     shortAddress: 'Улоч МФЙ, Шахрисабз',
@@ -32,7 +32,7 @@ const contactLabels = {
   uz: {
     address: 'Manzil',
     phone: 'Telefon',
-    email: 'Email',
+    email: 'Elektron pochta',
     mapSubtitle: "Shahrisabz, O'zbekiston",
     route: 'Marshrut',
     shortAddress: 'Uloch MFY, Shahrisabz',
