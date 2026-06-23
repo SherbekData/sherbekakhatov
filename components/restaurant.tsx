@@ -168,7 +168,7 @@ export function Restaurant() {
             </div>
 
             <a
-              href="tel:+998554058888"
+              href="tel:+998873378888"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#2a4338] transition-all duration-300"
             >
               <Phone className="w-4 h-4" />
