@@ -2,7 +2,6 @@
 
 import { useLanguage } from '@/lib/language-context';
 import { CalendarDays, ChevronDown, MapPin, Play, Star } from 'lucide-react';
-import Link from 'next/link';
 
 const heroLabels = {
   en: {
@@ -31,6 +30,10 @@ const heroLabels = {
 export function Hero() {
   const { language, t } = useLanguage();
   const labels = heroLabels[language];
+
+  const openBooking = () => {
+    window.dispatchEvent(new Event('miraki:open-booking'));
+  };
 
   return (
     <section
@@ -73,17 +76,14 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 animate-fade-up animation-delay-400">
-            <Link
-              href="?be-booking-open=true"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '?be-booking-open=true';
-              }}
+            <button
+              type="button"
+              onClick={openBooking}
               className="hidden sm:inline-flex justify-center items-center gap-3 rounded-lg bg-[#d4af37] px-8 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-all duration-300 hover:shadow-lg hover:shadow-[#d4af37]/20"
             >
               <CalendarDays className="h-5 w-5" />
               {t.nav.bookNow}
-            </Link>
+            </button>
 
             <a
               href="#gallery"
