@@ -90,6 +90,10 @@ export function Rooms() {
   const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
 
+  const openBooking = () => {
+    window.dispatchEvent(new Event('miraki:open-booking'));
+  };
+
   return (
     <section
       id="rooms"
@@ -217,10 +221,8 @@ export function Rooms() {
                   </motion.div>
 
                   <motion.button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = '?be-booking-open=true';
-                    }}
+                    type="button"
+                    onClick={openBooking}
                     className="relative w-full overflow-hidden rounded-lg bg-[#d4af37] py-4 text-center text-[#1a3328] text-xs sm:text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-bold transition-colors duration-300 hover:bg-[#c9a430]"
                     whileHover={shouldReduceMotion ? undefined : { y: -1 }}
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}

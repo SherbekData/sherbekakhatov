@@ -109,6 +109,11 @@ export function Header() {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  const openBooking = () => {
+    setIsMobileMenuOpen(false);
+    window.dispatchEvent(new Event('miraki:open-booking'));
+  };
+
   return (
     <>
       <header
@@ -194,16 +199,13 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              href="?be-booking-open=true"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '?be-booking-open=true';
-              }}
-              className="booking-link rounded-lg bg-[#d4af37] px-7 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-colors duration-300"
+            <button
+              type="button"
+              onClick={openBooking}
+              className="rounded-lg bg-[#d4af37] px-7 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-colors duration-300"
             >
               {t.nav.bookNow}
-            </Link>
+            </button>
           </div>
 
           <div className="lg:hidden flex items-center gap-2 relative z-50">
@@ -274,9 +276,17 @@ export function Header() {
             </div>
           </div>
 
+          <button
+            type="button"
+            onClick={openBooking}
+            className="mt-6 py-4 rounded-lg bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
+          >
+            {t.nav.bookNow}
+          </button>
+
           <a
             href={phoneHref}
-            className="mt-6 py-4 rounded-lg border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
+            className="mt-3 py-4 rounded-lg border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
           >
             {labels.call}
           </a>
