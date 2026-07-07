@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Montserrat } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/language-context'
 import FloatingContact from '@/components/FloatingContact'
+import MobileBottomCTA from '@/components/MobileBottomCTA'
 import './globals.css'
 import LoadingScreen from '@/components/LoadingScreen'
 import CustomCursor from '@/components/CustomCursor'
@@ -207,6 +208,7 @@ export default function RootLayout({
         <CustomCursor />
         <LanguageProvider>
           {children}
+          <MobileBottomCTA />
         </LanguageProvider>
         <FloatingContact />
         <Analytics />
