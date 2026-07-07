@@ -69,6 +69,13 @@ body.be-booking-open {
     display: none;
 }
 
+[data-miraki-hidden-promo="true"] {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
 @media screen and (max-width: 1280px) {
     body.be-booking-open {
         padding-bottom: 162px;
@@ -152,7 +159,15 @@ body.be-booking-open {
     body > div[class*="discount" i],
     body > div[class*="promo" i],
     body > div[class*="gift" i],
-    body > div[class*="special" i] {
+    body > div[class*="special" i],
+    body > button[class*="discount" i],
+    body > button[class*="promo" i],
+    body > button[class*="gift" i],
+    body > button[class*="special" i],
+    body > a[class*="discount" i],
+    body > a[class*="promo" i],
+    body > a[class*="gift" i],
+    body > a[class*="special" i] {
         display: none !important;
         opacity: 0 !important;
         pointer-events: none !important;
