@@ -75,7 +75,7 @@ export default function CustomCursor() {
   const targetRef = useRef({ x: 0, y: 0 })
   const ringRefPosition = useRef({ x: 0, y: 0 })
   const dotRefPosition = useRef({ x: 0, y: 0 })
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     const canUseCustomCursor =
@@ -166,7 +166,7 @@ export default function CustomCursor() {
       window.removeEventListener('pointerover', handlePointerOver)
       document.documentElement.removeEventListener('mouseleave', handlePointerLeave)
 
-      if (rafRef.current) {
+      if (rafRef.current !== null) {
         window.cancelAnimationFrame(rafRef.current)
       }
     }
