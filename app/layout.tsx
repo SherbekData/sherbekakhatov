@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/lib/language-context'
 import FloatingContact from '@/components/FloatingContact'
 import './globals.css'
 import LoadingScreen from '@/components/LoadingScreen'
+import CustomCursor from '@/components/CustomCursor'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
@@ -203,6 +204,7 @@ export default function RootLayout({
       </head>
       <body className={`${cormorant.variable} ${montserrat.variable} font-serif antialiased`}>
         <LoadingScreen />
+        <CustomCursor />
         <LanguageProvider>
           {children}
         </LanguageProvider>
