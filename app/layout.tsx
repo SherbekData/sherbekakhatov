@@ -6,6 +6,7 @@ import FloatingContact from '@/components/FloatingContact'
 import './globals.css'
 import LoadingScreen from '@/components/LoadingScreen'
 import CustomCursor from '@/components/CustomCursor'
+import LenisProvider from '@/components/LenisProvider'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
@@ -206,7 +207,9 @@ export default function RootLayout({
         <LoadingScreen />
         <CustomCursor />
         <LanguageProvider>
-          {children}
+          <LenisProvider>
+            {children}
+          </LenisProvider>
         </LanguageProvider>
         <FloatingContact />
         <Analytics />
