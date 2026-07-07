@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
@@ -46,6 +46,9 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const navRef = useRef<HTMLElement | null>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const phoneHref = `tel:${t.contact.phone.replace(/\s/g, '')}`;
 
   useEffect(() => {
@@ -103,6 +106,31 @@ export function Header() {
     };
   }, [pathname, navLinks]);
 
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeLink = linkRefs.current[activeSection];
+      const nav = navRef.current;
+
+      if (!activeLink || !nav) {
+        setIndicatorStyle((style) => ({ ...style, opacity: 0 }));
+        return;
+      }
+
+      const linkRect = activeLink.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+
+      setIndicatorStyle({
+        left: linkRect.left - navRect.left,
+        width: linkRect.width,
+        opacity: 1,
+      });
+    };
+
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
+  }, [activeSection, navLinks]);
+
   const isActive = (section: string) => {
     return activeSection === section;
   };
@@ -145,14 +173,25 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+          <nav ref={navRef} className="relative hidden lg:flex items-center gap-8 xl:gap-10">
+            <span
+              className="pointer-events-none absolute bottom-0 h-px rounded-full bg-[#d4af37] shadow-[0_0_18px_rgba(212,175,55,0.7)] transition-all duration-500 ease-out"
+              style={{
+                left: indicatorStyle.left,
+                width: indicatorStyle.width,
+                opacity: indicatorStyle.opacity,
+              }}
+            />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                ref={(element) => {
+                  linkRefs.current[link.section] = element;
+                }}
                 className={cn(
                   'relative py-3 text-sm tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/88 hover:text-[#d4af37] transition-colors duration-300',
-                  isActive(link.section) && 'text-[#d4af37] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-[#d4af37]'
+                  isActive(link.section) && 'text-[#d4af37]'
                 )}
               >
                 {link.label}
