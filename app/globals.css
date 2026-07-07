@@ -300,3 +300,11 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+@keyframes loadingLine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
