@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/language-context';
+import Image from 'next/image';
 import { CalendarDays, ChevronDown, MapPin, Play, Star } from 'lucide-react';
 
 const heroLabels = {
@@ -41,12 +42,15 @@ export function Hero() {
       className="relative min-h-screen overflow-hidden bg-[#10261d] pt-24 lg:pt-28"
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           aria-hidden="true"
           src="/miraki-hero.jpg"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[45%_62%] sm:object-[52%_60%] lg:object-[62%_58%]"
+          fill
+          priority
           fetchPriority="high"
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full object-cover object-[45%_62%] sm:object-[52%_60%] lg:object-[62%_58%]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,35,22,0.92)_0%,rgba(3,35,22,0.72)_35%,rgba(3,35,22,0.28)_60%,rgba(3,35,22,0.05)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#062318]/82 via-[#10261d]/8 to-transparent" />
