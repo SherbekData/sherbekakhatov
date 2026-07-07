@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/language-context'
 import FloatingContact from '@/components/FloatingContact'
 import './globals.css'
+import LoadingScreen from '@/components/LoadingScreen'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
