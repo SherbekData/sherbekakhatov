@@ -5,6 +5,39 @@ import { X } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import "./be-style.css";
 
+const PROMO_KEYWORDS = ['discount', 'discounts', 'promo', 'gift', 'special', 'sale', 'chegirma', 'chegirmalar', 'скидка', 'скидки'];
+
+function isInjectedPromoElement(element: Element) {
+  const value = [
+    element.id,
+    element.className,
+    element.getAttribute('aria-label'),
+    element.getAttribute('title'),
+    element.getAttribute('data-testid'),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return PROMO_KEYWORDS.some((keyword) => value.includes(keyword));
+}
+
+function hideInjectedPromoWidgets() {
+  if (window.innerWidth > 768) return;
+
+  document.body.querySelectorAll('body > div, body > button, body > iframe, body > a').forEach((element) => {
+    if (element.closest('#booking, #block-search, #be-search-form')) return;
+
+    const rect = element.getBoundingClientRect();
+    const isFloating = window.getComputedStyle(element).position === 'fixed' || window.getComputedStyle(element).position === 'sticky';
+    const looksLikePromoBubble = rect.width <= 140 && rect.height <= 140 && rect.right > window.innerWidth - 180;
+
+    if (isInjectedPromoElement(element) || (isFloating && looksLikePromoBubble)) {
+      element.setAttribute('data-miraki-hidden-promo', 'true');
+    }
+  });
+}
+
 function BeSearchForm() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +75,20 @@ function BeSearchForm() {
   useEffect(() => {
     searchForm(window);
   }, [language]);
+
+  useEffect(() => {
+    hideInjectedPromoWidgets();
+
+    const observer = new MutationObserver(() => hideInjectedPromoWidgets());
+    observer.observe(document.body, { childList: true, subtree: false });
+
+    window.addEventListener('resize', hideInjectedPromoWidgets);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', hideInjectedPromoWidgets);
+    };
+  }, []);
 
   useEffect(() => {
     if (window.location.search.includes('be-booking-open=true')) {
