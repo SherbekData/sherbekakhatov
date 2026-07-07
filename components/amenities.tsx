@@ -63,13 +63,13 @@ export function Amenities() {
               <div
                 key={amenity.key}
                 className={cn(
-                  'group relative bg-white p-6 lg:p-8 rounded-sm border border-[#1a3328]/10 hover:border-[#d4af37]/50 transition-all duration-500 hover:shadow-xl hover:shadow-[#1a3328]/5 text-center',
+                  'premium-card-hover premium-soft-transition group relative bg-white p-6 lg:p-8 rounded-sm border border-[#1a3328]/10 hover:border-[#d4af37]/50 text-center',
                   isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 )}
                 style={{ transitionDelay: `${300 + index * 100}ms` }}
               >
                 {/* Icon */}
-                <div className="w-16 h-16 mx-auto rounded-full bg-[#1a3328]/5 flex items-center justify-center mb-6 group-hover:bg-[#1a3328] transition-colors duration-300">
+                <div className="premium-icon-tilt premium-soft-transition w-16 h-16 mx-auto rounded-full bg-[#1a3328]/5 flex items-center justify-center mb-6 group-hover:bg-[#1a3328]">
                   <Icon className="w-7 h-7 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
 

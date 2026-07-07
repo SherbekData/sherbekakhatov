@@ -62,7 +62,7 @@ export function Restaurant() {
               isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             )}
           >
-            <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
+            <div className="premium-image-zoom premium-card-hover premium-soft-transition relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop"
                 alt={labels.imageAlt}
@@ -87,9 +87,11 @@ export function Restaurant() {
               </div>
             </div>
 
-            <div className="hidden sm:block absolute -bottom-8 right-4 lg:-right-10 bg-[#1a3328] p-7 lg:p-8 rounded-3xl shadow-2xl max-w-xs border border-white/10">
+            <div className="premium-card-hover premium-soft-transition hidden sm:block absolute -bottom-8 right-4 lg:-right-10 bg-[#1a3328] p-7 lg:p-8 rounded-3xl shadow-2xl max-w-xs border border-white/10">
               <div className="flex items-center gap-4">
-                <Users className="w-8 h-8 text-[#d4af37]" />
+                <span className="premium-icon-tilt">
+                  <Users className="w-8 h-8 text-[#d4af37]" />
+                </span>
                 <div>
                   <div className="text-[#d4af37] text-4xl lg:text-5xl font-light leading-none">
                     120
@@ -128,15 +130,19 @@ export function Restaurant() {
             </p>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
-              <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
-                <CalendarCheck className="w-5 h-5 text-[#d4af37] mb-3" />
+              <div className="premium-card-hover premium-soft-transition rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
+                <span className="premium-icon-tilt inline-block mb-3">
+                  <CalendarCheck className="w-5 h-5 text-[#d4af37]" />
+                </span>
                 <p className="text-[#1a3328] text-sm font-medium">
                   {labels.events}
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
-                <Leaf className="w-5 h-5 text-[#d4af37] mb-3" />
+              <div className="premium-card-hover premium-soft-transition rounded-2xl bg-white/55 border border-[#1a3328]/10 p-4">
+                <span className="premium-icon-tilt inline-block mb-3">
+                  <Leaf className="w-5 h-5 text-[#d4af37]" />
+                </span>
                 <p className="text-[#1a3328] text-sm font-medium">
                   {labels.gardenToTable}
                 </p>
@@ -151,12 +157,12 @@ export function Restaurant() {
                   <div
                     key={feature.key}
                     className={cn(
-                      'flex items-center gap-4 rounded-2xl bg-[#1a3328]/5 p-4 transition-all duration-500',
+                      'premium-card-hover flex items-center gap-4 rounded-2xl bg-[#1a3328]/5 p-4 transition-all duration-500',
                       isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     )}
                     style={{ transitionDelay: `${600 + index * 100}ms` }}
                   >
-                    <div className="w-11 h-11 rounded-full bg-[#1a3328] flex items-center justify-center shrink-0">
+                    <div className="premium-icon-tilt premium-soft-transition w-11 h-11 rounded-full bg-[#1a3328] flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-[#d4af37]" />
                     </div>
                     <span className="text-[#1a3328] text-sm font-[family-name:var(--font-montserrat)] tracking-wider leading-snug">
@@ -169,9 +175,11 @@ export function Restaurant() {
 
             <a
               href="tel:+998873378888"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#2a4338] transition-all duration-300"
+              className="premium-soft-transition premium-hover-lift premium-gold-glow premium-focus-ring inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.16em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#2a4338] transition-all duration-300"
             >
-              <Phone className="w-4 h-4" />
+              <span className="premium-icon-tilt">
+                <Phone className="w-4 h-4" />
+              </span>
               {t.contact.phone}
             </a>
           </div>

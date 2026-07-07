@@ -190,7 +190,7 @@ export function Header() {
                   linkRefs.current[link.section] = element;
                 }}
                 className={cn(
-                  'relative py-3 text-sm tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/88 hover:text-[#d4af37] transition-colors duration-300',
+                  'premium-soft-transition premium-focus-ring relative py-3 text-sm tracking-[0.08em] uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/88 hover:text-[#d4af37]',
                   isActive(link.section) && 'text-[#d4af37]'
                 )}
               >
@@ -203,7 +203,7 @@ export function Header() {
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex min-w-20 items-center justify-center gap-2 rounded-lg border border-white/25 px-4 py-3 text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:text-[#d4af37] transition-colors"
+                className="premium-soft-transition premium-hover-lift premium-focus-ring flex min-w-20 items-center justify-center gap-2 rounded-lg border border-white/25 px-4 py-3 text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] font-medium text-[#f5f0e8]/90 hover:border-[#d4af37]/45 hover:text-[#d4af37]"
                 aria-label={labels.changeLanguage}
               >
                 {languages.find((l) => l.code === language)?.label}
@@ -241,7 +241,7 @@ export function Header() {
             <button
               type="button"
               onClick={openBooking}
-              className="rounded-lg bg-[#d4af37] px-7 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-colors duration-300"
+              className="premium-soft-transition premium-hover-lift premium-gold-glow premium-focus-ring rounded-lg bg-[#d4af37] px-7 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430]"
             >
               {t.nav.bookNow}
             </button>
@@ -250,7 +250,7 @@ export function Header() {
           <div className="lg:hidden flex items-center gap-2 relative z-50">
             <a
               href={phoneHref}
-              className="w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
+              className="premium-soft-transition premium-focus-ring w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95"
               aria-label={labels.callHotel}
             >
               <Phone className="w-5 h-5" />
@@ -258,7 +258,7 @@ export function Header() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95 transition"
+              className="premium-soft-transition premium-focus-ring w-10 h-10 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-[#f5f0e8] active:scale-95"
               aria-label={labels.openMenu}
               aria-expanded={isMobileMenuOpen}
             >
@@ -284,7 +284,7 @@ export function Header() {
                 href={link.href}
                 onClick={closeMobileMenu}
                 className={cn(
-                  'py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37] transition-colors',
+                  'premium-soft-transition premium-focus-ring py-4 border-b border-white/10 text-xl text-[#f5f0e8] tracking-wide font-medium hover:text-[#d4af37]',
                   isActive(link.section) && 'text-[#d4af37]'
                 )}
               >
@@ -303,7 +303,7 @@ export function Header() {
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={cn(
-                    'py-3 rounded-lg text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] transition-colors border',
+                    'premium-soft-transition premium-focus-ring py-3 rounded-lg text-sm tracking-wider uppercase font-[family-name:var(--font-montserrat)] border',
                     language === lang.code
                       ? 'bg-[#d4af37] border-[#d4af37] text-[#1a3328]'
                       : 'border-white/15 text-[#f5f0e8]/80'
@@ -318,14 +318,14 @@ export function Header() {
           <button
             type="button"
             onClick={openBooking}
-            className="mt-6 py-4 rounded-lg bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
+            className="premium-soft-transition premium-focus-ring mt-6 py-4 rounded-lg bg-[#d4af37] text-[#1a3328] text-center text-sm font-semibold tracking-wider uppercase"
           >
             {t.nav.bookNow}
           </button>
 
           <a
             href={phoneHref}
-            className="mt-3 py-4 rounded-lg border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
+            className="premium-soft-transition premium-focus-ring mt-3 py-4 rounded-lg border border-white/15 text-[#f5f0e8] text-center text-sm font-semibold tracking-wider uppercase"
           >
             {labels.call}
           </a>

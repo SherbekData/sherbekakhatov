@@ -79,7 +79,7 @@ export function Hero() {
             <button
               type="button"
               onClick={openBooking}
-              className="hidden sm:inline-flex justify-center items-center gap-3 rounded-lg bg-[#d4af37] px-8 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430] transition-all duration-300 hover:shadow-lg hover:shadow-[#d4af37]/20"
+              className="premium-soft-transition premium-hover-lift premium-gold-glow premium-focus-ring hidden sm:inline-flex justify-center items-center gap-3 rounded-lg bg-[#d4af37] px-8 py-4 text-[#1a3328] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold hover:bg-[#c9a430]"
             >
               <CalendarDays className="h-5 w-5" />
               {t.nav.bookNow}
@@ -87,9 +87,9 @@ export function Hero() {
 
             <a
               href="#gallery"
-              className="inline-flex justify-center items-center gap-3 rounded-lg border border-[#f5f0e8]/35 bg-[#10261d]/22 px-8 py-4 text-[#f5f0e8] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold backdrop-blur-sm hover:bg-[#f5f0e8]/10 transition-all duration-300"
+              className="premium-soft-transition premium-hover-lift premium-focus-ring inline-flex justify-center items-center gap-3 rounded-lg border border-[#f5f0e8]/35 bg-[#10261d]/22 px-8 py-4 text-[#f5f0e8] text-sm tracking-[0.12em] uppercase font-[family-name:var(--font-montserrat)] font-semibold backdrop-blur-sm hover:border-[#d4af37]/55 hover:bg-[#f5f0e8]/10"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#f5f0e8]/55">
+              <span className="premium-icon-tilt flex h-7 w-7 items-center justify-center rounded-full border border-[#f5f0e8]/55">
                 <Play className="h-3.5 w-3.5 fill-current" />
               </span>
               {labels.video}

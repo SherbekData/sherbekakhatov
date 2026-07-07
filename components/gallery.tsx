@@ -144,7 +144,7 @@ export function Gallery() {
                 setSelectedIndex(null);
               }}
               className={cn(
-                'px-6 py-2 text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-montserrat)] font-medium rounded-sm transition-all duration-300',
+                'premium-soft-transition premium-hover-lift premium-focus-ring px-6 py-2 text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-montserrat)] font-medium rounded-sm',
                 activeCategory === category
                   ? 'bg-[#d4af37] text-[#1a3328]'
                   : 'border border-[#f5f0e8]/30 text-[#f5f0e8]/70 hover:border-[#d4af37]/50 hover:text-[#f5f0e8]'
@@ -161,7 +161,7 @@ export function Gallery() {
               key={image.src}
               type="button"
               className={cn(
-                'group relative block w-full break-inside-avoid overflow-hidden rounded-sm cursor-pointer transition-all duration-500 text-left',
+                'premium-card-hover premium-gold-glow premium-focus-ring group relative block w-full break-inside-avoid overflow-hidden rounded-sm cursor-pointer transition-all duration-500 text-left',
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
                 image.aspect === 'tall' && 'aspect-[3/4]',
                 image.aspect === 'wide' && 'aspect-[4/3]',
@@ -177,12 +177,12 @@ export function Gallery() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 loading={index < 3 ? 'eager' : 'lazy'}
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="premium-image-zoom object-cover"
               />
               <div className="absolute inset-0 bg-[#1a3328]/0 group-hover:bg-[#1a3328]/40 transition-all duration-300" />
 
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#f5f0e8]/80 bg-[#1a3328]/25 text-[#f5f0e8] backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                <div className="premium-icon-tilt premium-soft-transition flex h-14 w-14 items-center justify-center rounded-full border border-[#f5f0e8]/80 bg-[#1a3328]/25 text-[#f5f0e8] backdrop-blur-sm group-hover:scale-105">
                   <Expand className="h-5 w-5" />
                 </div>
               </div>
@@ -204,7 +204,7 @@ export function Gallery() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/45 to-transparent" />
           <button
             type="button"
-            className="absolute right-5 top-5 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md transition-all duration-300 hover:border-[#d4af37]/60 hover:text-[#d4af37] md:right-8 md:top-8"
+            className="premium-soft-transition premium-hover-lift premium-focus-ring absolute right-5 top-5 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md hover:border-[#d4af37]/60 hover:text-[#d4af37] md:right-8 md:top-8"
             onClick={(event) => {
               event.stopPropagation();
               closeLightbox();
@@ -218,7 +218,7 @@ export function Gallery() {
             <>
               <button
                 type="button"
-                className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md transition-all duration-300 hover:border-[#d4af37]/60 hover:text-[#d4af37] md:left-8 md:h-14 md:w-14"
+                className="premium-soft-transition premium-focus-ring absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md hover:border-[#d4af37]/60 hover:text-[#d4af37] md:left-8 md:h-14 md:w-14"
                 onClick={(event) => {
                   event.stopPropagation();
                   goToPrevious();
@@ -229,7 +229,7 @@ export function Gallery() {
               </button>
               <button
                 type="button"
-                className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md transition-all duration-300 hover:border-[#d4af37]/60 hover:text-[#d4af37] md:right-8 md:h-14 md:w-14"
+                className="premium-soft-transition premium-focus-ring absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#f5f0e8]/18 bg-[#f5f0e8]/8 text-[#f5f0e8] backdrop-blur-md hover:border-[#d4af37]/60 hover:text-[#d4af37] md:right-8 md:h-14 md:w-14"
                 onClick={(event) => {
                   event.stopPropagation();
                   goToNext();

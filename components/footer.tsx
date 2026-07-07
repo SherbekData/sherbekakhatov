@@ -79,9 +79,11 @@ export function Footer() {
                     target={social.href === '#' ? undefined : '_blank'}
                     rel={social.href === '#' ? undefined : 'noopener noreferrer'}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full border border-[#f5f0e8]/20 flex items-center justify-center text-[#f5f0e8]/60 hover:border-[#d4af37] hover:text-[#d4af37] transition-colors duration-300"
+                    className="premium-soft-transition premium-hover-lift premium-focus-ring w-10 h-10 rounded-full border border-[#f5f0e8]/20 flex items-center justify-center text-[#f5f0e8]/60 hover:border-[#d4af37] hover:text-[#d4af37] transition-colors duration-300"
                   >
-                    <Icon className="w-5 h-5" />
+                    <span className="premium-icon-tilt">
+                      <Icon className="w-5 h-5" />
+                    </span>
                   </a>
                 );
               })}
@@ -97,7 +99,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors"
+                  className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -120,15 +122,15 @@ export function Footer() {
                       window.location.href = link.href;
                     }
                   }}
-                  className="block text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors"
+                  className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link href="#" className="block text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
+              <Link href="#" className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
                 {t.footer.links.privacy}
               </Link>
-              <Link href="#" className="block text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
+              <Link href="#" className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
                 {t.footer.links.terms}
               </Link>
             </nav>
@@ -150,7 +152,7 @@ export function Footer() {
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={cn(
-                    'text-xs tracking-wider font-[family-name:var(--font-montserrat)] transition-colors',
+                    'premium-soft-transition premium-focus-ring rounded-sm text-xs tracking-wider font-[family-name:var(--font-montserrat)] transition-colors',
                     language === lang.code
                       ? 'text-[#d4af37]'
                       : 'text-[#f5f0e8]/50 hover:text-[#f5f0e8]'
@@ -172,10 +174,12 @@ export function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-[#f5f0e8]/40 hover:text-[#d4af37] transition-colors text-sm font-[family-name:var(--font-montserrat)]"
+            className="premium-soft-transition premium-hover-lift premium-focus-ring flex items-center gap-2 rounded-sm text-[#f5f0e8]/40 hover:text-[#d4af37] transition-colors text-sm font-[family-name:var(--font-montserrat)]"
           >
             {labels.backToTop}
-            <ChevronUp className="w-4 h-4" />
+            <span className="premium-icon-tilt">
+              <ChevronUp className="w-4 h-4" />
+            </span>
           </button>
         </div>
       </div>

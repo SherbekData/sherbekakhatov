@@ -124,8 +124,8 @@ export function Contact() {
             isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
           )}>
             <div className="space-y-8">
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
+              <div className="premium-card-hover premium-soft-transition flex items-start gap-6 group rounded-2xl p-2">
+                <div className="premium-icon-tilt w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
                   <MapPin className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
@@ -136,23 +136,23 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
+              <div className="premium-card-hover premium-soft-transition flex items-start gap-6 group rounded-2xl p-2">
+                <div className="premium-icon-tilt w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
                   <Phone className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
                   <h3 className="text-[#1a3328] font-medium text-lg mb-2">{labels.phone}</h3>
                   <a
                     href={`tel:${t.contact.phone.replace(/\s/g, '')}`}
-                    className="text-[#1a3328]/60 hover:text-[#1a3328] transition-colors duration-300"
+                    className="premium-soft-transition premium-focus-ring rounded-sm text-[#1a3328]/60 hover:text-[#1a3328] transition-colors duration-300"
                   >
                     {t.contact.phone}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
+              <div className="premium-card-hover premium-soft-transition flex items-start gap-6 group rounded-2xl p-2">
+                <div className="premium-icon-tilt w-14 h-14 rounded-full bg-[#1a3328]/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1a3328] transition-colors duration-300">
                   <Mail className="w-6 h-6 text-[#1a3328] group-hover:text-[#d4af37] transition-colors duration-300" />
                 </div>
                 <div>
@@ -169,10 +169,12 @@ export function Contact() {
                 type="button"
                 onClick={() => setIsChannelPickerOpen((isOpen) => !isOpen)}
                 aria-expanded={isChannelPickerOpen}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.2em] uppercase font-[family-name:var(--font-montserrat)] font-medium hover:bg-[#2a4338] transition-all duration-300"
+                className="premium-soft-transition premium-hover-lift premium-gold-glow premium-focus-ring inline-flex items-center gap-3 px-8 py-4 bg-[#1a3328] text-[#f5f0e8] text-sm tracking-[0.2em] uppercase font-[family-name:var(--font-montserrat)] font-medium hover:bg-[#2a4338] transition-all duration-300"
               >
                 {t.contact.cta}
-                <ExternalLink className="w-4 h-4" />
+                <span className="premium-icon-tilt">
+                  <ExternalLink className="w-4 h-4" />
+                </span>
               </button>
 
               {isChannelPickerOpen && (
@@ -187,11 +189,13 @@ export function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(
-                          'flex items-center gap-3 border-b border-[#1a3328]/10 px-5 py-4 text-sm font-[family-name:var(--font-montserrat)] font-semibold text-[#1a3328] transition-colors last:border-b-0',
+                          'premium-soft-transition premium-focus-ring flex items-center gap-3 border-b border-[#1a3328]/10 px-5 py-4 text-sm font-[family-name:var(--font-montserrat)] font-semibold text-[#1a3328] transition-colors last:border-b-0',
                           channel.className
                         )}
                       >
-                        <Icon className="h-4 w-4 text-[#d4af37]" />
+                        <span className="premium-icon-tilt">
+                          <Icon className="h-4 w-4 text-[#d4af37]" />
+                        </span>
                         {channel.label}
                       </a>
                     );
@@ -206,7 +210,7 @@ export function Contact() {
             isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
           )}>
             <div
-              className="relative overflow-hidden rounded-lg border border-[#d4af37]/35 bg-[#d9d8cf] shadow-2xl shadow-[#1a3328]/10"
+              className="premium-card-hover premium-soft-transition relative overflow-hidden rounded-lg border border-[#d4af37]/35 bg-[#d9d8cf] shadow-2xl shadow-[#1a3328]/10"
               style={{ aspectRatio: '4/3' }}
             >
               <div
@@ -228,10 +232,10 @@ export function Contact() {
                 href="https://yandex.uz/maps/?ll=67.079361%2C39.026111&z=16&pt=67.079361,39.026111,pm2rdm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center group"
+                className="premium-focus-ring absolute inset-0 flex items-center justify-center group"
               >
                 <div className="relative z-10 w-[min(78%,360px)] rounded-lg border border-white/45 bg-[#f5f0e8]/78 p-6 text-center shadow-xl shadow-[#1a3328]/10 backdrop-blur-md transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a3328] shadow-lg shadow-[#1a3328]/20">
+                  <div className="premium-icon-tilt mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a3328] shadow-lg shadow-[#1a3328]/20">
                     <MapPin className="h-8 w-8 text-[#d4af37]" />
                   </div>
                   <h3 className="text-2xl text-[#1a3328] font-medium mb-1">
@@ -251,10 +255,12 @@ export function Contact() {
                 href="https://yandex.uz/maps/?rtext=~39.026111%2C67.079361&rtt=auto&z=15"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-5 right-5 z-20 inline-flex items-center gap-2 rounded-full bg-[#1a3328] px-5 py-3 text-sm font-semibold tracking-wide text-[#f5f0e8] shadow-xl shadow-[#1a3328]/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#243d32]"
+                className="premium-soft-transition premium-hover-lift premium-gold-glow premium-focus-ring absolute bottom-5 right-5 z-20 inline-flex items-center gap-2 rounded-full bg-[#1a3328] px-5 py-3 text-sm font-semibold tracking-wide text-[#f5f0e8] shadow-xl shadow-[#1a3328]/25 transition-all duration-200 hover:bg-[#243d32]"
                 style={{ fontFamily: 'var(--font-montserrat)' }}
               >
-                <MapPin className="w-4 h-4 text-[#d4af37]" />
+                <span className="premium-icon-tilt">
+                  <MapPin className="w-4 h-4 text-[#d4af37]" />
+                </span>
                 {labels.route}
               </a>
             </div>
