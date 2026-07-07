@@ -202,6 +202,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${cormorant.variable} ${montserrat.variable} font-serif antialiased`}>
+        <LoadingScreen />
         <LanguageProvider>
           {children}
         </LanguageProvider>
