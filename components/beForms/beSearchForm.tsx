@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { KeyRound, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import "./be-style.css";
 
@@ -79,35 +79,22 @@ function BeSearchForm() {
   }, [isOpen]);
 
   return (
-    <>
-      <button
-        type="button"
-        className={`be-mobile-trigger${isOpen ? ' is-hidden' : ''}`}
-        onClick={openBooking}
-        aria-controls="block-search"
-        aria-expanded={isOpen}
-        aria-label="Xonani bron qilish"
-      >
-        <KeyRound aria-hidden="true" />
-      </button>
+    <div id="booking" className={`sf-wrapper${isOpen ? ' is-open is-mobile-open' : ''}`}>
+      <div id="block-search">
+        <button
+          type="button"
+          className="be-mobile-close"
+          onClick={closeBooking}
+          aria-label="Bron formasini yopish"
+        >
+          <X aria-hidden="true" />
+        </button>
 
-      <div id="booking" className={`sf-wrapper${isOpen ? ' is-open is-mobile-open' : ''}`}>
-        <div id="block-search">
-          <button
-            type="button"
-            className="be-mobile-close"
-            onClick={closeBooking}
-            aria-label="Bron formasini yopish"
-          >
-            <X aria-hidden="true" />
-          </button>
-
-          <div id="be-search-form" className="be-container">
-            <a href="https://exely.com/" rel="nofollow" target="_blank">Hotel management software</a>
-          </div>
+        <div id="be-search-form" className="be-container">
+          <a href="https://exely.com/" rel="nofollow" target="_blank">Hotel management software</a>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
