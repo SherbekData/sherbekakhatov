@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/lib/language-context'
 import FloatingContact from '@/components/FloatingContact'
 import MobileBottomCTA from '@/components/MobileBottomCTA'
 import './globals.css'
+import './premium-effects.css'
 import LoadingScreen from '@/components/LoadingScreen'
 import CustomCursor from '@/components/CustomCursor'
 
