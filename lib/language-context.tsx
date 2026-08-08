@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
 import { translations, type Language, type Translations } from './translations';
 
 interface LanguageContextType {
@@ -57,25 +57,38 @@ const uzTranslations: Translations = {
   },
 };
 
+const SUPPORTED_LANGUAGES: readonly Language[] = ['uz', 'ru', 'en'];
+const DEFAULT_LANGUAGE: Language = 'uz';
+const STORAGE_KEY = 'language';
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // const [language, setLanguageState] = useState<Language>('uz');
+  // Server va klientning birinchi renderi bir xil bo'lishi shart, aks holda
+  // hydration mismatch bo'ladi. Shuning uchun localStorage useEffect ichida o'qiladi.
+  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
 
-  // const setLanguage = useCallback((lang: Language) => {
-  //   setLanguageState(lang);
-  // }, []);
-
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('language') as Language) || 'uz';
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
+      if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
+        setLanguageState(saved);
+      }
+    } catch {
+      // localStorage bloklangan (private mode / cookie siyosati) — default tilda qolamiz
     }
-    return 'uz';
-  });
+  }, []);
+
+  // <html lang="..."> ni tanlangan tilga moslash: screen reader va Google uchun muhim
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
 
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('language', lang);
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      // yozib bo'lmasa ham til sessiya davomida ishlayveradi
     }
   }, []);
 
