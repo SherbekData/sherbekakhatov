@@ -168,10 +168,11 @@ const jsonLd = {
         { '@type': 'LocationFeatureSpecification', name: 'Lavender Fields', value: true },
       ],
       numberOfRooms: 3,
-      starRating: { '@type': 'Rating', ratingValue: '5' },
+      // starRating olib tashlandi: rasmiy yulduz toifasi sertifikati bo'lmasa,
+      // Google o'zi-o'ziga qo'yilgan reytingni ishonchsiz signal deb hisoblaydi.
       sameAs: [
         'https://t.me/MirakiGardens',
-        'https://instagram.com/mirakigarden',
+        'https://www.instagram.com/miraki_gardens',
       ],
     },
     {
