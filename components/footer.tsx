@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/lib/language-context';
 import type { Language } from '@/lib/translations';
-import { Instagram, Facebook, Youtube, ChevronUp } from 'lucide-react';
+import { Instagram, Send, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const languages: { code: Language; label: string }[] = [
@@ -12,10 +12,11 @@ const languages: { code: Language; label: string }[] = [
   { code: 'uz', label: "O'zbek" },
 ];
 
+// Faqat haqiqatan mavjud bo'lgan kanallar. Facebook va YouTube href="#" edi —
+// bosilganda hech narsa bo'lmasdi, bu ishonchni tushiradi. Sahifalar ochilgach qaytariladi.
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/miraki_gardens?igsh=MWJqb3kzMjl3MW1uYw==', label: 'Instagram' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Send, href: 'https://t.me/MirakiGardens', label: 'Telegram' },
 ];
 
 const footerLabels = {
@@ -76,8 +77,8 @@ export function Footer() {
                   <a
                     key={social.label}
                     href={social.href}
-                    target={social.href === '#' ? undefined : '_blank'}
-                    rel={social.href === '#' ? undefined : 'noopener noreferrer'}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="premium-soft-transition premium-hover-lift premium-focus-ring w-10 h-10 rounded-full border border-[#f5f0e8]/20 flex items-center justify-center text-[#f5f0e8]/60 hover:border-[#d4af37] hover:text-[#d4af37] transition-colors duration-300"
                   >
@@ -127,12 +128,11 @@ export function Footer() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="#" className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
-                {t.footer.links.privacy}
-              </Link>
-              <Link href="#" className="premium-soft-transition premium-focus-ring block rounded-sm text-[#f5f0e8]/60 hover:text-[#f5f0e8] transition-colors">
-                {t.footer.links.terms}
-              </Link>
+              {/*
+                Maxfiylik siyosati va Xizmat shartlari havolalari href="#" edi.
+                O'lik havola Google uchun sifatsizlik signali, mijoz uchun esa xato taassurot.
+                /privacy va /terms sahifalari yozilgach qaytariladi.
+              */}
             </nav>
           </div>
 
