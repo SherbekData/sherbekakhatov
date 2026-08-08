@@ -8,7 +8,9 @@ import { MapPin, Phone, Mail, ExternalLink, MessageCircle, Send, Instagram } fro
 
 const WHATSAPP_NUMBER = '998873378888';
 const CONTACT_MESSAGE = "Salom, Miraki Gardens haqida ma'lumot olmoqchiman";
-const TELEGRAM_URL = `https://t.me/share/url?url=${encodeURIComponent('https://miraki-garden.uz')}&text=${encodeURIComponent(CONTACT_MESSAGE)}`;
+// Diqqat: avval bu `t.me/share/url?...` edi — u mehmonxonaga yozish emas,
+// saytni boshqa odamga ULASHISH oynasini ochardi. To'g'ri manzil — rasmiy kanal.
+const TELEGRAM_URL = 'https://t.me/MirakiGardens';
 const INSTAGRAM_URL = 'https://www.instagram.com/miraki_gardens?igsh=MWJqb3kzMjl3MW1uYw==';
 
 const contactLabels = {
