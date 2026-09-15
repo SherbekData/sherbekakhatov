@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/language-context';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import {
   Wifi,
@@ -17,22 +18,27 @@ const rooms = [
   {
     key: 'standard' as const,
     capacity: '2',
-    image:
+    images: [
       'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop',
+    ],
     amenities: ['wifi', 'ac', 'view'] as const,
   },
   {
     key: 'suite' as const,
     capacity: '2',
-    image:
-      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1600&auto=format&fit=crop',
+    images: [
+      '/images/rooms/suite/suite-bedroom-wide.webp',
+      '/images/rooms/suite/suite-bedroom-reverse.webp',
+      '/images/rooms/suite/suite-living-dining.webp',
+    ],
     amenities: ['wifi', 'ac', 'view', 'terrace'] as const,
   },
   {
     key: 'president' as const,
     capacity: '4',
-    image:
+    images: [
       'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1600&auto=format&fit=crop',
+    ],
     amenities: ['wifi', 'ac', 'underground', 'minibar'] as const,
   },
 ];
@@ -85,6 +91,80 @@ const amenityReveal: Variants = {
     transition: { duration: 0.45, ease: premiumEase },
   },
 };
+
+type RoomGalleryProps = {
+  images: string[];
+  alt: string;
+  priority: boolean;
+};
+
+function RoomGallery({ images, alt, priority }: RoomGalleryProps) {
+  const [activeImage, setActiveImage] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const selectFromPointer = (clientX: number, target: HTMLDivElement) => {
+    if (images.length < 2) return;
+    const bounds = target.getBoundingClientRect();
+    const position = Math.max(0, Math.min(clientX - bounds.left, bounds.width - 1));
+    setActiveImage(Math.floor((position / bounds.width) * images.length));
+  };
+
+  const moveBy = (direction: number) => {
+    setActiveImage((current) => (current + direction + images.length) % images.length);
+  };
+
+  return (
+    <div
+      className="relative aspect-[16/11] overflow-hidden bg-[#0b1d16]"
+      onMouseMove={(event) => selectFromPointer(event.clientX, event.currentTarget)}
+      onMouseLeave={() => setActiveImage(0)}
+      onTouchStart={(event) => {
+        touchStartX.current = event.touches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(event) => {
+        const start = touchStartX.current;
+        const end = event.changedTouches[0]?.clientX;
+        touchStartX.current = null;
+        if (start == null || end == null) return;
+        const distance = end - start;
+        if (Math.abs(distance) > 35) moveBy(distance < 0 ? 1 : -1);
+      }}
+    >
+      {images.map((src, imageIndex) => (
+        <Image
+          key={src}
+          src={src}
+          alt={`${alt} — ${imageIndex + 1}`}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          priority={priority && imageIndex === 0}
+          className={`object-contain transition-opacity duration-500 ease-out ${
+            imageIndex === activeImage ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10261d]/55 via-transparent to-transparent" />
+
+      {images.length > 1 && (
+        <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2" aria-label={`${alt} rasmlari`}>
+          {images.map((src, imageIndex) => (
+            <button
+              key={src}
+              type="button"
+              aria-label={`${imageIndex + 1}-rasmni ko‘rish`}
+              aria-current={imageIndex === activeImage}
+              onClick={() => setActiveImage(imageIndex)}
+              className={`h-1.5 rounded-full shadow-sm transition-all duration-300 ${
+                imageIndex === activeImage ? 'w-7 bg-[#d4af37]' : 'w-3 bg-white/70 hover:bg-white'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Rooms() {
   const { t } = useLanguage();
@@ -160,26 +240,22 @@ export function Rooms() {
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.995 }}
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative overflow-hidden">
                   <motion.div
-                    className="absolute inset-0"
+                    className="relative"
                     initial={shouldReduceMotion ? false : { scale: 1.08 }}
                     whileInView={shouldReduceMotion ? undefined : { scale: 1 }}
                     viewport={{ once: true, amount: 0.35 }}
                     transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={shouldReduceMotion ? undefined : { scale: 1.055 }}
                   >
-                    <Image
-                      src={room.image}
+                    <RoomGallery
+                      images={room.images}
                       alt={roomData.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
                       priority={index === 0}
-                      className="object-cover"
                     />
                   </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#10261d] via-[#10261d]/25 to-transparent" />
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_48%)]" />
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_48%)]" />
                 </div>
 
                 <div className="p-5 sm:p-6 lg:p-7">
