@@ -7,50 +7,41 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
 
-const galleryImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop',
-    category: 'views',
-    aspect: 'tall',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1974&auto=format&fit=crop',
-    category: 'rooms',
-    aspect: 'wide',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=2070&auto=format&fit=crop',
-    category: 'vineyard',
-    aspect: 'square',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop',
-    category: 'restaurant',
-    aspect: 'wide',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=2070&auto=format&fit=crop',
-    category: 'lavender',
-    aspect: 'tall',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070&auto=format&fit=crop',
-    category: 'rooms',
-    aspect: 'square',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?q=80&w=2070&auto=format&fit=crop',
-    category: 'orchard',
-    aspect: 'wide',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop',
-    category: 'exterior',
-    aspect: 'wide',
-  },
+type GalleryImage = {
+  src: string;
+  category: Exclude<GalleryCategory, 'all'>;
+  width: number;
+  height: number;
+  /** feature — 2×2 katak, tall — 1×2 (tik surat) */
+  size?: 'feature' | 'tall';
+  /** katta ekranda feature'ni o'ng tomonga surish (ritm uchun) */
+  alignRight?: boolean;
+};
+
+// Tartib ataylab tanlangan: katta "feature" suratlar ritm beradi, mavzular
+// (maskan → xona → tabiat → restoran) almashib keladi, oxiri kechki surat bilan tugaydi.
+// Katakcha to'ri grid-flow-dense bilan to'ldiriladi, shuning uchun tartib qatorma-qator o'qiladi.
+const galleryImages: GalleryImage[] = [
+  { src: '/images/gallery/estate-pool-hills.webp', category: 'exterior', width: 1600, height: 1199, size: 'feature' },
+  { src: '/images/gallery/room-bedroom-lounge.webp', category: 'rooms', width: 1600, height: 1034 },
+  { src: '/images/gallery/estate-infinity-pool.webp', category: 'exterior', width: 1600, height: 1066 },
+  { src: '/images/gallery/restaurant-terrace.webp', category: 'restaurant', width: 1600, height: 1067 },
+  { src: '/images/gallery/nature-garden-trellis.webp', category: 'nature', width: 1067, height: 1600, size: 'tall' },
+  { src: '/images/gallery/room-bathtub.webp', category: 'rooms', width: 1600, height: 1067 },
+  { src: '/images/gallery/nature-stone-cottages.webp', category: 'nature', width: 1600, height: 1067 },
+  { src: '/images/gallery/estate-main-building.webp', category: 'exterior', width: 1600, height: 1067 },
+  { src: '/images/gallery/nature-terraced-orchard.webp', category: 'nature', width: 1600, height: 1067, size: 'feature', alignRight: true },
+  { src: '/images/gallery/restaurant-glass-hall.webp', category: 'restaurant', width: 1600, height: 1067 },
+  { src: '/images/gallery/nature-bridge-pond.webp', category: 'nature', width: 1600, height: 1067 },
+  { src: '/images/gallery/room-bedroom-wardrobe.webp', category: 'rooms', width: 1600, height: 1037 },
+  { src: '/images/gallery/estate-pool-aerial.webp', category: 'exterior', width: 1600, height: 1199 },
+  { src: '/images/gallery/restaurant-rooftop.webp', category: 'restaurant', width: 1600, height: 1067 },
+  { src: '/images/gallery/room-terrace-view.webp', category: 'rooms', width: 1600, height: 1067 },
+  { src: '/images/gallery/estate-hammock.webp', category: 'exterior', width: 1600, height: 1067 },
+  { src: '/images/gallery/estate-evening-firepit.webp', category: 'exterior', width: 1600, height: 1067 },
 ];
 
-const categories = ['all', 'exterior', 'rooms', 'restaurant', 'vineyard', 'orchard', 'lavender', 'views'] as const;
+const categories = ['all', 'exterior', 'rooms', 'restaurant', 'nature'] as const;
 
 type GalleryCategory = typeof categories[number];
 
@@ -155,19 +146,21 @@ export function Gallery() {
           ))}
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {/* Katak balandligi 3:2 suratga mos: oddiy surat 1×1, feature 2×2, tik surat 1×2 —
+            shunda deyarli hech narsa kesilmaydi. Telefonda har surat o'z nisbatida bitta ustunda. */}
+        <div className="grid grid-cols-1 gap-4 md:grid-flow-dense md:grid-cols-2 md:auto-rows-[220px] lg:grid-cols-3 lg:auto-rows-[230px] xl:auto-rows-[270px] 2xl:auto-rows-[310px]">
           {filteredImages.map((image, index) => (
             <button
               key={image.src}
               type="button"
               className={cn(
-                'premium-card-hover premium-gold-glow premium-focus-ring group relative block w-full break-inside-avoid overflow-hidden rounded-sm cursor-pointer transition-all duration-500 text-left',
+                'premium-card-hover premium-gold-glow premium-focus-ring group relative block w-full overflow-hidden rounded-sm cursor-pointer transition-all duration-500 text-left md:aspect-auto',
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
-                image.aspect === 'tall' && 'aspect-[3/4]',
-                image.aspect === 'wide' && 'aspect-[4/3]',
-                image.aspect === 'square' && 'aspect-square'
+                image.size === 'tall' ? 'aspect-[4/5] md:row-span-2' : 'aspect-[3/2]',
+                image.size === 'feature' && 'md:col-span-2 md:row-span-2',
+                image.alignRight && 'lg:col-start-2'
               )}
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
+              style={{ transitionDelay: `${400 + Math.min(index, 8) * 90}ms` }}
               onClick={() => setSelectedIndex(index)}
               aria-label={`Open Miraki Gardens ${t.gallery.categories[image.category as GalleryCategory]} image`}
             >
@@ -175,7 +168,9 @@ export function Gallery() {
                 src={image.src}
                 alt={`Miraki Gardens – ${t.gallery.categories[image.category as GalleryCategory]}`}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes={image.size === 'feature'
+                  ? '(max-width: 768px) 100vw, 66vw'
+                  : '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'}
                 loading={index < 3 ? 'eager' : 'lazy'}
                 className="premium-image-zoom object-cover"
               />
@@ -249,8 +244,8 @@ export function Gallery() {
               <Image
                 src={selectedImage.src}
                 alt={`Miraki Gardens – ${t.gallery.categories[selectedImage.category as GalleryCategory]}`}
-                width={1800}
-                height={1200}
+                width={selectedImage.width}
+                height={selectedImage.height}
                 className="mx-auto max-h-[76vh] w-auto rounded-lg object-contain"
                 priority
               />

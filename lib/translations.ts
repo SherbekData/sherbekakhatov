@@ -157,13 +157,10 @@ export const translations = {
       title: 'Moments at Miraki',
       categories: {
         all: 'All',
-        exterior: 'Exterior',
+        exterior: 'The Estate',
         rooms: 'Rooms',
         restaurant: 'Restaurant',
-        vineyard: 'Vineyard',
-        orchard: 'Orchard',
-        lavender: 'Lavender',
-        views: 'Mountain Views',
+        nature: 'Nature',
       },
     },
     // Testimonials
@@ -366,13 +363,10 @@ export const translations = {
       title: 'Моменты в Miraki',
       categories: {
         all: 'Все',
-        exterior: 'Экстерьер',
+        exterior: 'Курорт',
         rooms: 'Номера',
         restaurant: 'Ресторан',
-        vineyard: 'Виноградник',
-        orchard: 'Сад',
-        lavender: 'Лаванда',
-        views: 'Горные виды',
+        nature: 'Природа',
       },
     },
     // Testimonials
@@ -575,13 +569,10 @@ export const translations = {
       title: "Mirakidagi lahzalar",
       categories: {
         all: "Hammasi",
-        exterior: "Tashqi ko'rinish",
+        exterior: "Maskan",
         rooms: "Xonalar",
         restaurant: "Restoran",
-        vineyard: "Uzumzor",
-        orchard: "Bog'",
-        lavender: "Lavanda",
-        views: "Tog' manzaralari",
+        nature: "Tabiat",
       },
     },
     // Testimonials
