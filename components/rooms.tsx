@@ -19,7 +19,9 @@ const rooms = [
     key: 'standard' as const,
     capacity: '2',
     images: [
-      'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop',
+      '/images/rooms/standard/standard-bedroom.webp',
+      '/images/rooms/standard/standard-bedroom-angle.webp',
+      '/images/rooms/standard/standard-bathroom.webp',
     ],
     amenities: ['wifi', 'ac', 'view'] as const,
   },
@@ -37,7 +39,9 @@ const rooms = [
     key: 'president' as const,
     capacity: '4',
     images: [
-      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1600&auto=format&fit=crop',
+      '/images/rooms/president/president-bedroom.webp',
+      '/images/rooms/president/president-cinema-lounge.webp',
+      '/images/rooms/president/president-atrium.webp',
     ],
     amenities: ['wifi', 'ac', 'underground', 'minibar'] as const,
   },
