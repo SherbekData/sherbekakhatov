@@ -155,6 +155,8 @@ export const translations = {
     gallery: {
       subtitle: 'Visual Journey',
       title: 'Moments at Miraki',
+      showAll: 'View all',
+      showLess: 'Show less',
       categories: {
         all: 'All',
         exterior: 'The Estate',
@@ -361,6 +363,8 @@ export const translations = {
     gallery: {
       subtitle: 'Визуальное путешествие',
       title: 'Моменты в Miraki',
+      showAll: 'Смотреть все',
+      showLess: 'Скрыть',
       categories: {
         all: 'Все',
         exterior: 'Курорт',
@@ -567,6 +571,8 @@ export const translations = {
     gallery: {
       subtitle: "Vizual sayohat",
       title: "Mirakidagi lahzalar",
+      showAll: "Barchasini ko'rish",
+      showLess: "Yashirish",
       categories: {
         all: "Hammasi",
         exterior: "Maskan",
