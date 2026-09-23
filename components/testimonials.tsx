@@ -79,21 +79,22 @@ export function Testimonials() {
   }
 
   return (
-    <section id="reviews" className="bg-[#10271e] py-24 text-[#f5f0e8] md:py-32">
+    <section
+      id="reviews"
+      className={`bg-[#10271e] text-[#f5f0e8] ${visibleReviews.length === 0 ? 'py-8 md:py-10' : 'py-24 md:py-32'}`}
+    >
       <div className="container mx-auto px-6">
-        <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
+        <div className={visibleReviews.length === 0 ? 'flex justify-center' : 'mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end'}>
+          {visibleReviews.length > 0 && <div>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#d4af37]">{labels.eyebrow}</p>
             <h2 className="text-4xl font-medium md:text-6xl">{labels.title}</h2>
-          </div>
+          </div>}
           <button onClick={() => { setOpen(true); setMessage(null); }} className="premium-focus-ring border border-[#d4af37] px-7 py-3 text-xs uppercase tracking-[0.2em] text-[#d4af37] transition hover:bg-[#d4af37] hover:text-[#10271e]">
             {labels.write}
           </button>
         </div>
 
-        {visibleReviews.length === 0 ? (
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-12 text-center text-white/60">{labels.empty}</div>
-        ) : (
+        {visibleReviews.length > 0 && (
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {visibleReviews.map((review) => (
               <article key={review.id} className="rounded-2xl border border-white/10 bg-white/[0.06] p-7">
