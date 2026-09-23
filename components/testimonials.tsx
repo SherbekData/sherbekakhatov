@@ -6,6 +6,8 @@ import { CheckCircle2, Quote, Star, X } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import type { Review } from '@/lib/reviews';
 
+const REVIEWS_API_URL = process.env.NEXT_PUBLIC_REVIEWS_API_URL ?? 'https://reviews.miraki-garden.uz';
+
 const copy = {
   uz: {
     eyebrow: 'Mehmonlar tajribasi', title: 'Mehmonlar fikri', empty: 'Birinchi izohni siz qoldiring.',
@@ -46,7 +48,7 @@ export function Testimonials() {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   useEffect(() => {
-    fetch('/api/reviews').then((response) => response.json()).then((data) => setReviews(data.reviews ?? [])).catch(() => setReviews([]));
+    fetch(`${REVIEWS_API_URL}/reviews`).then((response) => response.json()).then((data) => setReviews(data.reviews ?? [])).catch(() => setReviews([]));
   }, []);
 
   const visibleReviews = useMemo(() => reviews.slice(0, 6), [reviews]);
@@ -57,7 +59,7 @@ export function Testimonials() {
     setMessage(null);
     const form = new FormData(event.currentTarget);
 
-    const response = await fetch('/api/reviews', {
+    const response = await fetch(`${REVIEWS_API_URL}/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
